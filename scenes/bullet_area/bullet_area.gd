@@ -29,6 +29,8 @@ static func create_bullet(dir: Vector2, data: Bullet) -> BulletArea:
 	var blt_scene: BulletArea = blt_packed_scene.instantiate()
 	if not data:
 		data = Bullet.new()
+	else:
+		blt_scene._bullet_data = data
 	blt_scene._speed = randf_range(data.min_bullet_speed, data.max_bullet_speed)
 	blt_scene._direction = dir.rotated(randf_range(-deg_to_rad(data.spread), deg_to_rad(data.spread)))
 	blt_scene.collision_shape_2d.shape = data.collision_box
