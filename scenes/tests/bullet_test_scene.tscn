@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://15t03750dr8n"]
+
+[ext_resource type="Script" uid="uid://dr8v2hms2hpsb" path="res://scenes/tests/bullet_test_scene.gd" id="1_pt6fm"]
+[ext_resource type="Resource" uid="uid://ctvwll2n136kg" path="res://custom resources/bullet_A.tres" id="2_hcxrm"]
+
+[node name="BulletTestScene" type="Node2D" unique_id=1920894832]
+script = ExtResource("1_pt6fm")
+bullet_data = ExtResource("2_hcxrm")
+bullet_dir = Vector2(1, 1)
