@@ -17,7 +17,6 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	position += _direction * _speed * delta
-	print(_speed)
 
 
 func _on_hit_body(body: Node2D) -> void:
@@ -34,8 +33,6 @@ static func create_bullet(dir: Vector2, data: Bullet) -> BulletArea:
 	blt_scene._direction = dir.rotated(randf_range(-deg_to_rad(data.spread), deg_to_rad(data.spread)))
 	blt_scene.collision_shape_2d.shape = data.collision_box
 	blt_scene.sprite_2d.texture = data.texture
-	for property in blt_scene.get_property_list():
-		prints(property, blt_scene.get(property["name"]))
 	
 	return blt_scene
 
