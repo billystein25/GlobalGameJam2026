@@ -22,6 +22,7 @@ func _physics_process(delta: float) -> void:
 func _on_hit_body(body: Node2D) -> void:
 	if body.has_method("got_hit"):
 		body.got_hit(_bullet_data, _direction)
+		queue_free()
 
 
 static func create_bullet(dir: Vector2, data: Bullet) -> BulletArea:
