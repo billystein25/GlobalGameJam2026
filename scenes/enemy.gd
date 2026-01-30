@@ -18,18 +18,17 @@ var knockback = Vector2.ZERO
 @export var health = 100
 @export var power = 100
 @export var movementspeed = 100
-@export var speed = 0 
+@export var currentspeed = 10
 
 func _physics_process(delta: float) -> void:
 	
 	if isAlive:
 		if health <=0:
-			emit_signal("remove_from_array",self)
-			isAlive = 0
+			isAlive = false
 			
 		knockback = knockback.move_toward(Vector2.ZERO, knockback_recovery)
-		var direction = global_position.direction_to(player.global_position)
-		velocity = delta *speed * direction * movementspeed
+		var direction = global_position.direction_to(Vector2(100,100))
+		velocity = delta * currentspeed * direction * movementspeed
 		velocity += knockback
 		animsprite.flip_h = direction.x > 0
 		
@@ -47,7 +46,7 @@ func anim():
 		
 		
 		
-func _on_hurtbox_hurt(damage, angle, knockback_amount):
-	health -= damage
+func got_hit(currentBullet: Bullet, bullet_direction):
+	health -= currentBullet.damage
 	snd_hit.play()
-	knockback = angle * knockback_amount
+	knockback = bullet_direction * 10

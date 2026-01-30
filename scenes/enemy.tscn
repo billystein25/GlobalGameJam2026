@@ -23,12 +23,6 @@ texture = ExtResource("2_md0e3")
 position = Vector2(0, -68)
 shape = SubResource("CapsuleShape2D_md0e3")
 
-[node name="Hurtbox" type="Area2D" parent="." unique_id=1731508579]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=514375331]
-
-[node name="Timer" type="Timer" parent="Hurtbox" unique_id=650604508]
-
 [node name="snd_hit" type="AudioStreamPlayer" parent="." unique_id=1750178298]
 stream = ExtResource("3_4ra3w")
 pitch_scale = 4.0
