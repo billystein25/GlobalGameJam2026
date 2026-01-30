@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bi38a0e7ae2gf"]
+
+[ext_resource type="Script" uid="uid://brji3tr5c2soj" path="res://scenes/enemy.gd" id="1_7p1mj"]
+[ext_resource type="Texture2D" uid="uid://cux0kyit1ob7o" path="res://icon.svg" id="2_md0e3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_md0e3"]
+radius = 68.0
+height = 150.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1655233537]
+safe_margin = 9.144
+script = ExtResource("1_7p1mj")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2134237476]
+position = Vector2(0, -69.25)
+scale = Vector2(1, 1.0117188)
+texture = ExtResource("2_md0e3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=279762641]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1307537726]
+position = Vector2(0, -68)
+shape = SubResource("CapsuleShape2D_md0e3")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=886338663]
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1731508579]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=514375331]
+
+[node name="Timer" type="Timer" parent="Hurtbox" unique_id=650604508]
