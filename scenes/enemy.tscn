@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://brji3tr5c2soj" path="res://scenes/enemy.gd" id="1_7p1mj"]
 [ext_resource type="Texture2D" uid="uid://cux0kyit1ob7o" path="res://icon.svg" id="2_md0e3"]
+[ext_resource type="AudioStream" uid="uid://cpqwndb4sj1f3" path="res://custom resources/Blip.wav" id="3_4ra3w"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_md0e3"]
 radius = 68.0
@@ -22,10 +23,14 @@ texture = ExtResource("2_md0e3")
 position = Vector2(0, -68)
 shape = SubResource("CapsuleShape2D_md0e3")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=886338663]
-
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1731508579]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=514375331]
 
 [node name="Timer" type="Timer" parent="Hurtbox" unique_id=650604508]
+
+[node name="snd_hit" type="AudioStreamPlayer" parent="." unique_id=1750178298]
+stream = ExtResource("3_4ra3w")
+pitch_scale = 4.0
+
+[node name="snd_die" type="AudioStreamPlayer" parent="." unique_id=886338663]
