@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dl36k8kgol72g"]
+
+[ext_resource type="Script" uid="uid://hmw2bx6cbghr" path="res://scenes/root/game_manager.gd" id="1_2ofal"]
+[ext_resource type="PackedScene" uid="uid://bi38a0e7ae2gf" path="res://scenes/enemy.tscn" id="2_r7s56"]
+
+[node name="GameManager" type="Node" unique_id=993008258 node_paths=PackedStringArray("enemies", "projectiles")]
+script = ExtResource("1_2ofal")
+enemies = NodePath("Enemies")
+projectiles = NodePath("Projectiles")
+
+[node name="Enemies" type="Node" parent="." unique_id=1442895623]
+
+[node name="CharacterBody2D" parent="Enemies" unique_id=1655233537 instance=ExtResource("2_r7s56")]
+position = Vector2(95, 192)
+
+[node name="Projectiles" type="Node" parent="." unique_id=320170466]
+
+[node name="Node" type="Node2D" parent="." unique_id=1122484952 groups=["player"]]
+position = Vector2(918, 375)

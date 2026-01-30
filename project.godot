@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 Globals="*uid://cewk2hstroso8"
 
+[global_group]
+
+Enemy="All enemies should be in this group"
+player="Only the player should have this group"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

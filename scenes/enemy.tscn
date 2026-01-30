@@ -19,10 +19,11 @@ metadata/_custom_type_script = "uid://bmi2be76ohiii"
 radius = 68.0
 height = 150.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1655233537]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1655233537 node_paths=PackedStringArray("time_to_shoot") groups=["Enemy"]]
 safe_margin = 9.144
 script = ExtResource("1_7p1mj")
 enemy_resource = SubResource("Resource_xwavj")
+time_to_shoot = NodePath("TimeToShoot")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2134237476]
 position = Vector2(0, -69.25)
@@ -40,3 +41,7 @@ stream = ExtResource("3_4ra3w")
 pitch_scale = 4.0
 
 [node name="snd_die" type="AudioStreamPlayer" parent="." unique_id=886338663]
+
+[node name="TimeToShoot" type="Timer" parent="." unique_id=1418818892]
+one_shot = true
+autostart = true
