@@ -19,3 +19,4 @@ bullet_dir = Vector2(1, 0)
 
 [node name="CharacterBody2D" parent="." unique_id=1655233537 instance=ExtResource("3_ggy53")]
 position = Vector2(688, 73)
+enemy_resource = null

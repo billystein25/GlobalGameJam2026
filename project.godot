@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 Globals="*uid://cewk2hstroso8"
 
+[global_group]
+
+Enemy="All enemies should be in this group"
+player="Only the player should have this group"
 [input]
 
 "Player Go Right"={

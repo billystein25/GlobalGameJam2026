@@ -1,17 +1,21 @@
 class_name Enemy
 extends CharacterBody2D
 
+signal request_spawn_bullet(pos: Vector2, dir: Vector2, data: Bullet)
+
 var isAlive = true
 
 #imports 
 @onready var animsprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var player = get_tree().get_first_node_in_group("player")
+@onready var player: Node2D = get_tree().get_first_node_in_group("player")
 @onready var snd_die = $snd_die
 @onready var snd_hit = $snd_hit
 
 
 #exports
 @export var enemy_resource: Enemy_resource
+@export_group("Node References")
+@export var time_to_shoot: Timer
 
 var knockback = Vector2.ZERO
 
@@ -19,6 +23,13 @@ var knockback = Vector2.ZERO
 @onready var power = enemy_resource.power
 @onready var movementspeed = enemy_resource.acceleration
 @onready var maxspeed = enemy_resource.max_speed
+
+
+func _ready() -> void:
+	time_to_shoot.timeout.connect(_on_request_shoot)
+	time_to_shoot.wait_time = enemy_resource.bullet.seconds_per_shot
+	
+
 
 func _physics_process(delta: float) -> void:
 	
@@ -34,7 +45,13 @@ func _physics_process(delta: float) -> void:
 		
 		move_and_slide()
 		
-		
+
+func _on_request_shoot() -> void:
+	for i in enemy_resource.bullet.bullets_per_shot:
+		request_spawn_bullet.emit(position, position.direction_to(player.position), enemy_resource.bullet)
+	time_to_shoot.start()
+
+
 func anim():
 	if !isAlive:
 		snd_die.play()
