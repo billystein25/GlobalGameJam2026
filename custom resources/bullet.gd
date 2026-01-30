@@ -7,6 +7,7 @@ enum ShotType{
 }
 
 @export_group("Bullet Properties")
+@export var damage: float = 10.0
 @export var shots_per_second: float = 1.0
 ## Only works when [member shot_type] is [constant ShotType.SHOTGUN].
 @export var bullets_per_shot: int = 1

@@ -9,14 +9,20 @@ extends Area2D
 @export var collision_shape_2d: CollisionShape2D
 @export var sprite_2d: Sprite2D
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	body_entered.connect(_on_hit_body)
 
 
 func _physics_process(delta: float) -> void:
 	position += _direction * _speed * delta
 	print(_speed)
+
+
+func _on_hit_body(body: Node2D) -> void:
+	if body.has_method("got_hit"):
+		body.got_hit(_bullet_data, _direction)
 
 
 static func create_bullet(dir: Vector2, data: Bullet) -> BulletArea:
