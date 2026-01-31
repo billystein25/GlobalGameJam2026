@@ -22,7 +22,6 @@ func _ready() -> void:
 	area_entered.connect(_on_hit_area)
 	force_innactive_timer.timeout.connect(_on_force_innactive)
 
-
 func _physics_process(delta: float) -> void:
 	position += _direction * _speed * delta
 
@@ -73,7 +72,8 @@ static func assign_properties_to_bullet(bullet: BulletArea, dir: Vector2, data: 
 	bullet.collision_shape_2d.shape = data.collision_box
 	bullet.sprite_2d.texture = data.texture
 	bullet.collision_mask = data.hit_mask
-	bullet.sprite_2d.rotation = dir.angle()
+	bullet.rotation = dir.angle()
+	bullet.sprite_2d.offset = data.offset
 	
 	if source and source.is_in_group("player"):
 		bullet.modulate = Color(0, 1, 0) # Green for player
