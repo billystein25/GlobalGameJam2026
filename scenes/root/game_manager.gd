@@ -19,6 +19,7 @@ func _ready() -> void:
 		menu_ui.set_menu_state(MenuUI.MenuStates.NONE)
 		menu_ui.is_start_menu = false
 	var player = get_tree().get_first_node_in_group("player")
+	player.on_leave.connect(on_leave_manager)
 	if player:
 		if player.has_signal("request_spawn_bullet"):
 			player.request_spawn_bullet.connect(_on_enemy_spawn_bullet)
@@ -46,5 +47,15 @@ func _on_enemy_spawn_bullet(pos: Vector2, dir: Vector2, data: Bullet, source: No
 func _on_bullet_deactivate(bullet: BulletArea) -> void:
 	innactive_bullets.append(active_bullets.pop_at(active_bullets.find(bullet)))
 
-
+func on_leave_manager(animation: AnimatedSprite2D, position: Vector2, isWizard: bool):
+	add_child(animation)
+	animation.global_position = position
+	animation.scale*=6
+	
+	if isWizard:
+		animation.play("death_wizard")
+	else:
+		animation.play("death")
+	await animation.animation_finished
+	animation.queue_free()
 # ***************************************
