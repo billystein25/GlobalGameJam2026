@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://t6psbobjtjm7"]
 
 [ext_resource type="Script" uid="uid://hmw2bx6cbghr" path="res://scenes/root/game_manager.gd" id="1_8lngr"]
+[ext_resource type="PackedScene" uid="uid://cki75c4q6ug0d" path="res://scenes/player.tscn" id="2_b47l5"]
 [ext_resource type="PackedScene" uid="uid://jf3v1j7nrgyt" path="res://scenes/ui/start_menu_ui.tscn" id="2_cko7m"]
 
 [node name="MainLevel" type="Node" unique_id=1213414492 node_paths=PackedStringArray("enemies", "projectiles", "menu_ui", "spawners", "enemy_spawn_timer")]
@@ -13,6 +14,8 @@ enemy_spawn_timer = NodePath("EnemySpawnTimer")
 metadata/_custom_type_script = "uid://hmw2bx6cbghr"
 
 [node name="Entities" type="Node2D" parent="." unique_id=755761729]
+
+[node name="Player" parent="Entities" unique_id=1181188848 instance=ExtResource("2_b47l5")]
 
 [node name="Projectiles" type="Node" parent="." unique_id=889259240]
 
