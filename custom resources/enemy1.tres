@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Enemy_resource" format=3 uid="uid://bryw12fpawvh8"]
+
+[ext_resource type="Script" uid="uid://bmi2be76ohiii" path="res://scenes/enemies/enemies_resource.gd" id="1_f7cbo"]
+[ext_resource type="Script" uid="uid://8jhmqy4er0c1" path="res://custom resources/bullet.gd" id="1_pid67"]
+
+[sub_resource type="Resource" id="Resource_43r70"]
+script = ExtResource("1_pid67")
+metadata/_custom_type_script = "uid://8jhmqy4er0c1"
+
+[resource]
+script = ExtResource("1_f7cbo")
+bullet = SubResource("Resource_43r70")
+metadata/_custom_type_script = "uid://bmi2be76ohiii"

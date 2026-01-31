@@ -18,6 +18,7 @@ var mouse_pos: Vector2
 @onready var sprite: Sprite2D = $Sprite2D
 @export var enemy_data: Enemy_resource
 var enemy_type 
+@export_flags_2d_physics var bullet_hit_mask: int = 2
 
 var base_texture: Texture
 var base_acceleration: float
@@ -88,6 +89,7 @@ func try_grab(enemy: Enemy) -> void:
 
 func grab(enemy: Enemy) -> void:
 	enemy_data = enemy.enemy_resource
+	enemy_data.bullet.hit_mask = bullet_hit_mask
 	
 	# Transfer stats
 	enemy_health = enemy_data.health 

@@ -24,6 +24,8 @@ texture = ExtResource("2_g2els")
 
 [node name="GrabArea" type="Area2D" parent="." unique_id=1569190510]
 position = Vector2(3, 1)
+collision_layer = 16
+collision_mask = 2
 
 [node name="GrabAreaCollisionBox" type="CollisionShape2D" parent="GrabArea" unique_id=1671240828]
 position = Vector2(-3.5, -13.5)

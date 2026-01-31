@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bi38a0e7ae2gf"]
 
-[ext_resource type="Script" uid="uid://brji3tr5c2soj" path="res://scenes/enemies/enemy.gd" id="1_7p1mj"]
+[ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_7p1mj"]
 [ext_resource type="Script" uid="uid://bmi2be76ohiii" path="res://scenes/enemies/enemies_resource.gd" id="2_c4w8v"]
 [ext_resource type="Texture2D" uid="uid://cux0kyit1ob7o" path="res://icon.svg" id="2_md0e3"]
 [ext_resource type="AudioStream" uid="uid://cpqwndb4sj1f3" path="res://custom resources/Blip.wav" id="3_4ra3w"]
@@ -62,6 +62,8 @@ radius = 49.0
 height = 98.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1655233537 node_paths=PackedStringArray("time_to_shoot") groups=["Enemy"]]
+collision_layer = 2
+collision_mask = 2
 safe_margin = 9.144
 script = ExtResource("1_7p1mj")
 enemy_resource = SubResource("Resource_xwavj")
