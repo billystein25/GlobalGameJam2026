@@ -1,6 +1,8 @@
 class_name GameManager
 extends Node
 
+
+@export_file("*.tscn") var load_scene: String
 @export_group("Node References")
 @export var enemies: Node
 @export var projectiles: Node
@@ -13,6 +15,7 @@ var innactive_bullets: Array[BulletArea]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if menu_ui:
+		menu_ui.load_scene = load_scene
 		menu_ui.set_menu_state(MenuUI.MenuStates.NONE)
 		menu_ui.is_start_menu = false
 	var player = get_tree().get_first_node_in_group("player")

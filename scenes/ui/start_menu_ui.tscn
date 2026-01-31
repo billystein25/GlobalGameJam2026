@@ -5,19 +5,25 @@
 [ext_resource type="Theme" uid="uid://be6j7ps5y3njk" path="res://scenes/ui/sub_menu_theme.tres" id="3_eexpk"]
 [ext_resource type="LabelSettings" uid="uid://cq7vbl5dcvrsj" path="res://scenes/ui/sub_menu_label_settings.tres" id="4_50ifq"]
 
-[node name="MenuUI" type="CanvasLayer" unique_id=683639668 node_paths=PackedStringArray("main_menu", "settings_menu", "play_button", "resume_button", "settings_button", "quit_button", "back_button", "master_volume_slider", "music_volume_slider", "sound_effect_volume_slider")]
+[node name="MenuUI" type="CanvasLayer" unique_id=683639668 node_paths=PackedStringArray("main_menu", "mm_play_button", "mm_settings_button", "mm_quit_button", "pause_menu", "pm_resume_button", "pm_settings_button", "pm_quit_button", "settings_menu", "back_button", "master_volume_slider", "music_volume_slider", "sound_effect_volume_slider", "death_menu", "dm_retry_button", "dm_quit_button")]
 process_mode = 3
 script = ExtResource("1_0m5jy")
 main_menu = NodePath("MainMenu")
+mm_play_button = NodePath("MainMenu/PlayButton")
+mm_settings_button = NodePath("MainMenu/SettingsButton")
+mm_quit_button = NodePath("MainMenu/QuitButton")
+pause_menu = NodePath("PauseMenu")
+pm_resume_button = NodePath("PauseMenu/ResumeButton")
+pm_settings_button = NodePath("PauseMenu/SettingsButton")
+pm_quit_button = NodePath("PauseMenu/QuitButton")
 settings_menu = NodePath("SettingsMenu")
-play_button = NodePath("MainMenu/PlayButton")
-resume_button = NodePath("MainMenu/ResumeButton")
-settings_button = NodePath("MainMenu/SettingsButton")
-quit_button = NodePath("MainMenu/QuitButton")
 back_button = NodePath("SettingsMenu/BackButton")
 master_volume_slider = NodePath("SettingsMenu/MasterVolume/MasterVolumeSlider")
 music_volume_slider = NodePath("SettingsMenu/MusicVolume/MusicVolumeSlider")
 sound_effect_volume_slider = NodePath("SettingsMenu/SoundEffectVolume/SoundEffectVolumeScrollBar")
+death_menu = NodePath("DeathMenu")
+dm_retry_button = NodePath("DeathMenu/RetryButton")
+dm_quit_button = NodePath("DeathMenu/QuitButton")
 
 [node name="MainMenu" type="VBoxContainer" parent="." unique_id=2008474761]
 custom_minimum_size = Vector2(200, 800)
@@ -41,11 +47,6 @@ size_flags_vertical = 4
 theme = ExtResource("2_v35sh")
 text = "Play"
 
-[node name="ResumeButton" type="Button" parent="MainMenu" unique_id=206463898]
-layout_mode = 2
-theme = ExtResource("2_v35sh")
-text = "Resume"
-
 [node name="SettingsButton" type="Button" parent="MainMenu" unique_id=1966818136]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -54,6 +55,40 @@ theme = ExtResource("2_v35sh")
 text = "Settings"
 
 [node name="QuitButton" type="Button" parent="MainMenu" unique_id=1944083235]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_v35sh")
+text = "Quit"
+
+[node name="PauseMenu" type="VBoxContainer" parent="." unique_id=2052662222]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -197.5
+offset_top = -221.5
+offset_right = 197.5
+offset_bottom = 221.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResumeButton" type="Button" parent="PauseMenu" unique_id=1383812906]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_v35sh")
+text = "Resume"
+
+[node name="SettingsButton" type="Button" parent="PauseMenu" unique_id=1730868778]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_v35sh")
+text = "Settings"
+
+[node name="QuitButton" type="Button" parent="PauseMenu" unique_id=351100384]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -143,3 +178,30 @@ theme = ExtResource("2_v35sh")
 max_value = 1.25
 step = 0.01
 value = 1.0
+
+[node name="DeathMenu" type="VBoxContainer" parent="." unique_id=819166653]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -133.0
+offset_top = -147.0
+offset_right = 133.0
+offset_bottom = 147.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RetryButton" type="Button" parent="DeathMenu" unique_id=1327874880]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_v35sh")
+text = "Retry"
+
+[node name="QuitButton" type="Button" parent="DeathMenu" unique_id=860591205]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_v35sh")
+text = "Quit"

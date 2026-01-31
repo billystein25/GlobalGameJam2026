@@ -6,6 +6,7 @@ enum MenuStates{
 	MAIN_MENU,
 	SETTINGS_MENU,
 	PAUSE_MENU,
+	DEATH_MENU,
 }
 
 var curr_menu_state: MenuStates = MenuStates.MAIN_MENU
@@ -13,26 +14,47 @@ var is_start_menu := true
 
 @export_file("*.tscn") var load_scene: String
 @export_group("Node References")
-@export var main_menu: VBoxContainer
-@export var settings_menu: VBoxContainer
 # main menu buttons
-@export var play_button: Button
-@export var resume_button: Button
-@export var settings_button: Button
-@export var quit_button: Button
+@export_subgroup("Main Menu")
+@export var main_menu: VBoxContainer
+@export var mm_play_button: Button
+@export var mm_settings_button: Button
+@export var mm_quit_button: Button
+# pause menu buttons
+@export_subgroup("Pause Menu")
+@export var pause_menu: VBoxContainer
+@export var pm_resume_button: Button
+@export var pm_settings_button: Button
+@export var pm_quit_button: Button
 # settings menu buttons
+@export_subgroup("Settings Menu")
+@export var settings_menu: VBoxContainer
 @export var back_button: Button
 # settings menu sliders
 @export var master_volume_slider: HSlider
 @export var music_volume_slider: HSlider
 @export var sound_effect_volume_slider: HSlider
+@export_subgroup("Death Menu")
+# death menu
+@export var death_menu: VBoxContainer
+@export var dm_retry_button: Button
+@export var dm_quit_button: Button
+
 
 @onready var btn_to_func: Dictionary[Button, Callable] = {
-	play_button : _on_play_button_pressed,
-	resume_button : _on_resume_button_pressed,
-	settings_button : _on_settings_button_pressed,
-	quit_button : _on_quit_button_pressed,
-	back_button: _on_back_button_pressed
+	# main menu
+	mm_play_button : _on_play_button_pressed,
+	mm_settings_button : _on_settings_button_pressed,
+	mm_quit_button : _on_quit_button_pressed,
+	# pause menu
+	pm_resume_button : _on_resume_button_pressed,
+	pm_settings_button : _on_settings_button_pressed,
+	pm_quit_button : _on_quit_button_pressed,
+	# settings menu
+	back_button: _on_back_button_pressed,
+	# death menu
+	dm_retry_button : _on_play_button_pressed,
+	dm_quit_button : _on_quit_button_pressed,
 } 
 
 @onready var slider_value_changed_to_func: Dictionary[Slider, Callable] = {
@@ -99,41 +121,50 @@ func set_menu_state(state: MenuStates) -> void:
 	curr_menu_state = state
 	match state:
 		MenuStates.NONE:
-			# main
 			main_menu.visible = false
-			main_menu.process_mode = Node.PROCESS_MODE_DISABLED
-			# settings
+			pause_menu.visible = false
 			settings_menu.visible = false
+			death_menu.visible = false
+			main_menu.process_mode = Node.PROCESS_MODE_DISABLED
+			pause_menu.process_mode = Node.PROCESS_MODE_DISABLED
 			settings_menu.process_mode = Node.PROCESS_MODE_DISABLED
+			death_menu.process_mode = Node.PROCESS_MODE_DISABLED
 		MenuStates.MAIN_MENU:
-			# main
 			main_menu.visible = true
-			play_button.visible = true
-			resume_button.visible = false
-			play_button.process_mode = Node.PROCESS_MODE_INHERIT
-			resume_button.process_mode = Node.PROCESS_MODE_DISABLED
-			main_menu.process_mode = Node.PROCESS_MODE_INHERIT
-			# settings
+			pause_menu.visible = false
 			settings_menu.visible = false
+			death_menu.visible = false
+			main_menu.process_mode = Node.PROCESS_MODE_INHERIT
+			pause_menu.process_mode = Node.PROCESS_MODE_DISABLED
 			settings_menu.process_mode = Node.PROCESS_MODE_DISABLED
+			death_menu.process_mode = Node.PROCESS_MODE_DISABLED
 		MenuStates.PAUSE_MENU:
-			# main
-			main_menu.visible = true
-			play_button.visible = false
-			resume_button.visible = true
-			play_button.process_mode = Node.PROCESS_MODE_DISABLED
-			resume_button.process_mode = Node.PROCESS_MODE_INHERIT
-			main_menu.process_mode = Node.PROCESS_MODE_INHERIT
-			# settings
-			settings_menu.visible = false
-			settings_menu.process_mode = Node.PROCESS_MODE_DISABLED
-		MenuStates.SETTINGS_MENU:
-			# main
 			main_menu.visible = false
+			pause_menu.visible = true
+			settings_menu.visible = false
+			death_menu.visible = false
 			main_menu.process_mode = Node.PROCESS_MODE_DISABLED
-			# settings
+			pause_menu.process_mode = Node.PROCESS_MODE_INHERIT
+			settings_menu.process_mode = Node.PROCESS_MODE_DISABLED
+			death_menu.process_mode = Node.PROCESS_MODE_DISABLED
+		MenuStates.SETTINGS_MENU:
+			main_menu.visible = false
+			pause_menu.visible = false
 			settings_menu.visible = true
+			death_menu.visible = false
+			main_menu.process_mode = Node.PROCESS_MODE_DISABLED
+			pause_menu.process_mode = Node.PROCESS_MODE_DISABLED
 			settings_menu.process_mode = Node.PROCESS_MODE_INHERIT
+			death_menu.process_mode = Node.PROCESS_MODE_DISABLED
+		MenuStates.DEATH_MENU:
+			main_menu.visible = false
+			pause_menu.visible = false
+			settings_menu.visible = false
+			death_menu.visible = true
+			main_menu.process_mode = Node.PROCESS_MODE_DISABLED
+			pause_menu.process_mode = Node.PROCESS_MODE_DISABLED
+			settings_menu.process_mode = Node.PROCESS_MODE_DISABLED
+			death_menu.process_mode = Node.PROCESS_MODE_INHERIT
 
 
 func _on_play_button_pressed() -> void:
