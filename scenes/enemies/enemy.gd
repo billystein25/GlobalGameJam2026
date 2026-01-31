@@ -16,6 +16,9 @@ var isAlive = true
 @export var enemy_resource: Enemy_resource
 @export_group("Node References")
 @export var time_to_shoot: Timer
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+
 
 var knockback = Vector2.ZERO
 
@@ -28,8 +31,10 @@ var knockback = Vector2.ZERO
 func _ready() -> void:
 	time_to_shoot.timeout.connect(_on_request_shoot)
 	time_to_shoot.wait_time = enemy_resource.bullet.seconds_per_shot
-	
-
+	animated_sprite_2d.sprite_frames = enemy_resource.sprite_anime
+	animated_sprite_2d.offset = enemy_resource.offset
+	collision_shape_2d.shape = enemy_resource.collision_box
+		
 
 func _physics_process(delta: float) -> void:
 	

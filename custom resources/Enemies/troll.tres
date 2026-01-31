@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Enemy_resource" format=3 uid="uid://w338p4fthl3h"]
+
+[ext_resource type="Resource" uid="uid://tuq3s48fxa1f" path="res://custom resources/Bullets/rock.tres" id="1_0attb"]
+[ext_resource type="Script" uid="uid://bmi2be76ohiii" path="res://scenes/enemies/enemies_resource.gd" id="1_hkiio"]
+[ext_resource type="SpriteFrames" uid="uid://jgs107qxpae5" path="res://custom resources/Enemies/animations/toll_animation.tres" id="3_krg74"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_krg74"]
+radius = 50.0
+height = 170.0
+
+[resource]
+script = ExtResource("1_hkiio")
+bullet = ExtResource("1_0attb")
+health = 300.0
+power = 150.0
+rank = 10
+max_speed = 40.0
+acceleration = 50.0
+type = 3
+collision_box = SubResource("CapsuleShape2D_krg74")
+sprite_anime = ExtResource("3_krg74")
+metadata/_custom_type_script = "uid://bmi2be76ohiii"

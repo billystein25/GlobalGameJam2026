@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0k7vvofmq0xb"
-path="res://.godot/imported/goblin_idleanimation-2.png.png-e37fdca659cedffe9c4451db49450897.ctex"
+uid="uid://dk6mvo2ydr8a1"
+path="res://.godot/imported/wizard_idleanimation.png-2154b2beb5a15904e6eafd482f1ddc0d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/goblin_idleanimation-2.png.png"
-dest_files=["res://.godot/imported/goblin_idleanimation-2.png.png-e37fdca659cedffe9c4451db49450897.ctex"]
+source_file="res://assets/wizard/wizard_idleanimation.png"
+dest_files=["res://.godot/imported/wizard_idleanimation.png-2154b2beb5a15904e6eafd482f1ddc0d.ctex"]
 
 [params]
 

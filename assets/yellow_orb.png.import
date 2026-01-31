@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tn7cv1acjs4l"
-path="res://.godot/imported/mask_idleanimation-2.png.png-4912d0c4d2b9692c9d261fdf834bb3df.ctex"
+uid="uid://bdfcvpihnrc5y"
+path="res://.godot/imported/yellow_orb.png-46a85ce2992a09af0abed290250a8e3f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/mask_idleanimation-2.png.png"
-dest_files=["res://.godot/imported/mask_idleanimation-2.png.png-4912d0c4d2b9692c9d261fdf834bb3df.ctex"]
+source_file="res://assets/yellow_orb.png"
+dest_files=["res://.godot/imported/yellow_orb.png-46a85ce2992a09af0abed290250a8e3f.ctex"]
 
 [params]
 
