@@ -9,6 +9,7 @@ extends Resource
 @export var max_speed: float = 150
 ## Only works when [member shot_type] is [constant ShotType.SHOTGUN].
 @export var acceleration: float = 100.0
+@export var type: int = 0
 
 ## In degrees
 @export_group("Child Properties")
