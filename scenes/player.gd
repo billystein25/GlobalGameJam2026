@@ -1,6 +1,7 @@
 extends Area2D
 
 signal request_spawn_bullet(pos: Vector2, dir: Vector2, data: Bullet, source: Node)
+signal on_leave(animation: AnimatedSprite2D, position: Vector2)
 
 var energy: int = 100
 var onEnemy = false
@@ -114,7 +115,7 @@ func grab(enemy: Enemy) -> void:
 	enemy_type = enemy_data.type
 	
 	hurtbox.shape = enemy_data.collision_box
-	sprite.scale = Vector2(5,5)
+	sprite.scale*=1.5
 
 	
 	if enemy_data.collision_box:
@@ -133,6 +134,11 @@ func leave() -> void:
 	
 	print("Leaving enemy form.")
 	onEnemy = false
+	var newAnimSprite := AnimatedSprite2D.new()
+	newAnimSprite.sprite_frames = enemy_data.sprite_anime
+		
+	on_leave.emit(newAnimSprite, global_position, enemy_data.type == Enemy_resource.EnemyTypes.WIZARD)
+	
 	enemy_data = null
 	bullet = null
 	
