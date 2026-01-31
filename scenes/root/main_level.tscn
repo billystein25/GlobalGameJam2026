@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://t6psbobjtjm7"]
+
+[ext_resource type="Script" uid="uid://hmw2bx6cbghr" path="res://scenes/root/game_manager.gd" id="1_8lngr"]
+[ext_resource type="PackedScene" uid="uid://jf3v1j7nrgyt" path="res://scenes/ui/start_menu_ui.tscn" id="2_cko7m"]
+
+[node name="MainLevel" type="Node" unique_id=1213414492 node_paths=PackedStringArray("enemies", "projectiles", "menu_ui", "spawners", "enemy_spawn_timer")]
+script = ExtResource("1_8lngr")
+enemies = NodePath("Entities")
+projectiles = NodePath("Projectiles")
+menu_ui = NodePath("MenuUI")
+spawners = NodePath("Spawners")
+enemy_spawn_timer = NodePath("EnemySpawnTimer")
+metadata/_custom_type_script = "uid://hmw2bx6cbghr"
+
+[node name="Entities" type="Node2D" parent="." unique_id=755761729]
+
+[node name="Projectiles" type="Node" parent="." unique_id=889259240]
+
+[node name="Spawners" type="Node" parent="." unique_id=169343153]
+
+[node name="MenuUI" parent="." unique_id=683639668 instance=ExtResource("2_cko7m")]
+layer = 2
+
+[node name="EnemySpawnTimer" type="Timer" parent="." unique_id=486513236]
+autostart = true
