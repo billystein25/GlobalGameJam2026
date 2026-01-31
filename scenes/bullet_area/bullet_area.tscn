@@ -11,6 +11,7 @@ sprite_2d = NodePath("Sprite2D")
 force_innactive_timer = NodePath("ForceInnactiveTimer")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=485486816]
+scale = Vector2(10, 10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2063508638]
 

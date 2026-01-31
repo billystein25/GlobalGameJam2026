@@ -23,6 +23,6 @@ var seconds_per_shot: float = 1.0 / shots_per_second
 @export var spread: float = 0.0
 @export_group("Child Properties")
 @export var collision_box: Shape2D = CircleShape2D.new()
-@export var texture: Texture = load("res://icon.svg")
+@export var texture: Texture
 
 # *************************************

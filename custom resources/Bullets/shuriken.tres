@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Bullet" format=3 uid="uid://ctvwll2n136kg"]
+
+[ext_resource type="Script" uid="uid://8jhmqy4er0c1" path="res://custom resources/Bullets/bullet.gd" id="1_blttm"]
+[ext_resource type="Texture2D" uid="uid://dj2ekbxvfhbu7" path="res://assets/shuriken.png" id="2_nukry"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hcxrm"]
+radius = 20.0
+
+[resource]
+script = ExtResource("1_blttm")
+collision_box = SubResource("CircleShape2D_hcxrm")
+texture = ExtResource("2_nukry")
+metadata/_custom_type_script = "uid://8jhmqy4er0c1"
