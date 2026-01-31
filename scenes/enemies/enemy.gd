@@ -54,6 +54,8 @@ func _on_request_shoot() -> void:
 
 func anim():
 	if !isAlive:
+		if player and player.has_method("kill_enemy"):
+			player.kill_enemy()
 		snd_die.play()
 		animsprite.play("death")
 		await animsprite.animation_finished
