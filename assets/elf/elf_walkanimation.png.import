@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cin06u4t3112l"
-path="res://.godot/imported/troll_idleanimation-2.png.png-907f0d677c646f047088183e00664feb.ctex"
+uid="uid://bkr51tqxfdlhm"
+path="res://.godot/imported/elf_walkanimation.png-4596d8f91096a57235611915f0b9ab76.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/troll_idleanimation-2.png.png"
-dest_files=["res://.godot/imported/troll_idleanimation-2.png.png-907f0d677c646f047088183e00664feb.ctex"]
+source_file="res://assets/elf/elf_walkanimation.png"
+dest_files=["res://.godot/imported/elf_walkanimation.png-4596d8f91096a57235611915f0b9ab76.ctex"]
 
 [params]
 

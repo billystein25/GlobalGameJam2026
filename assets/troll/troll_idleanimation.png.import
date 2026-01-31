@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://copb7qpbdkxle"
-path="res://.godot/imported/goblin_walkanimation.png-4386f7b3c97f986cea2569940c1eb4bd.ctex"
+uid="uid://c8crbuo4w81g"
+path="res://.godot/imported/troll_idleanimation.png-373e72b374225b35621b81e976764776.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/goblin_walkanimation.png"
-dest_files=["res://.godot/imported/goblin_walkanimation.png-4386f7b3c97f986cea2569940c1eb4bd.ctex"]
+source_file="res://assets/troll/troll_idleanimation.png"
+dest_files=["res://.godot/imported/troll_idleanimation.png-373e72b374225b35621b81e976764776.ctex"]
 
 [params]
 

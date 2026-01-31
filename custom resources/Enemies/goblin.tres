@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bmi2be76ohiii" path="res://scenes/enemies/enemies_resource.gd" id="1_5caj0"]
 [ext_resource type="Resource" uid="uid://ctvwll2n136kg" path="res://custom resources/Bullets/shuriken.tres" id="1_go0ov"]
+[ext_resource type="SpriteFrames" uid="uid://dcfl6kmciyqoj" path="res://custom resources/Enemies/animations/goblin_animation.tres" id="3_5hway"]
 
 [resource]
 script = ExtResource("1_5caj0")
 bullet = ExtResource("1_go0ov")
+sprite_anime = ExtResource("3_5hway")
 metadata/_custom_type_script = "uid://bmi2be76ohiii"

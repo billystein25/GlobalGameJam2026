@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Bullet" format=3 uid="uid://766c3pvick4b"]
+
+[ext_resource type="Script" uid="uid://8jhmqy4er0c1" path="res://custom resources/Bullets/bullet.gd" id="1_ltv2s"]
+[ext_resource type="Texture2D" uid="uid://nhik2rk3myxo" path="res://assets/arrow.png" id="2_mq0ll"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mq0ll"]
+
+[resource]
+script = ExtResource("1_ltv2s")
+collision_box = SubResource("CircleShape2D_mq0ll")
+texture = ExtResource("2_mq0ll")
+metadata/_custom_type_script = "uid://8jhmqy4er0c1"

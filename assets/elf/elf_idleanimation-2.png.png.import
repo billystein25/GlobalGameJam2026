@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bis11wya6hssa"
-path="res://.godot/imported/vampire_idleanimation-2.png.png-3f459e3be157ff4510c1cd1303540300.ctex"
+uid="uid://b0abhgps2a13d"
+path="res://.godot/imported/elf_idleanimation-2.png.png-2da40c032b610b39419648be2afc8559.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vampire_idleanimation-2.png.png"
-dest_files=["res://.godot/imported/vampire_idleanimation-2.png.png-3f459e3be157ff4510c1cd1303540300.ctex"]
+source_file="res://assets/elf/elf_idleanimation-2.png.png"
+dest_files=["res://.godot/imported/elf_idleanimation-2.png.png-2da40c032b610b39419648be2afc8559.ctex"]
 
 [params]
 

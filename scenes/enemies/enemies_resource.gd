@@ -14,6 +14,7 @@ extends Resource
 ## In degrees
 @export_group("Child Properties")
 @export var collision_box: Shape2D = CircleShape2D.new()
-@export var texture: Texture = load("res://icon.svg")
+@export var texture: Texture
+@export var sprite_anime: SpriteFrames
 
 # *************************************

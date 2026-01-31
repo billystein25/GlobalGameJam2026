@@ -143,7 +143,7 @@ func shoot() -> void:
 		request_spawn_bullet.emit(global_position, dir, bullet, self)
 		
 func select(potential_target: Enemy):
-	if potential_target.enemy_resource.rank <=energy:
+	if potential_target.enemy_resource.rank <=energy and potential_target.isAlive:
 		potential_grab_target = potential_target
 
 func _on_grab_area_body_entered(body: Node2D) -> void:

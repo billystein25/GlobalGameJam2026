@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0abhgps2a13d"
-path="res://.godot/imported/elf_idleanimation-2.png.png-c59418c8aba49f36f519f0e04ec2495a.ctex"
+uid="uid://b5mycxjgibtbx"
+path="res://.godot/imported/mask_deathanimation.png-3e6784982ae2ce0c24fc3f869f88ebc5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/elf_idleanimation-2.png.png"
-dest_files=["res://.godot/imported/elf_idleanimation-2.png.png-c59418c8aba49f36f519f0e04ec2495a.ctex"]
+source_file="res://assets/mask/mask_deathanimation.png"
+dest_files=["res://.godot/imported/mask_deathanimation.png-3e6784982ae2ce0c24fc3f869f88ebc5.ctex"]
 
 [params]
 

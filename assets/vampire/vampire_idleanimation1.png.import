@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d05j2vdyl648w"
-path="res://.godot/imported/wizard_idleanimation-2.png.png-956b43893fb7382da85788be88a0a812.ctex"
+uid="uid://c0hlbb2yu3e3e"
+path="res://.godot/imported/vampire_idleanimation1.png-4e0a981a1d39a0ae09e7dd589dc811d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/wizard_idleanimation-2.png.png"
-dest_files=["res://.godot/imported/wizard_idleanimation-2.png.png-956b43893fb7382da85788be88a0a812.ctex"]
+source_file="res://assets/vampire/vampire_idleanimation1.png"
+dest_files=["res://.godot/imported/vampire_idleanimation1.png-4e0a981a1d39a0ae09e7dd589dc811d8.ctex"]
 
 [params]
 
