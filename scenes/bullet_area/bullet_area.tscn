@@ -2,13 +2,14 @@
 
 [ext_resource type="Script" uid="uid://dhn27ykui53l3" path="res://scenes/bullet_area/bullet_area.gd" id="1_dc4lx"]
 
-[node name="BulletArea" type="Area2D" unique_id=1387364929 node_paths=PackedStringArray("collision_shape_2d", "sprite_2d", "force_innactive_timer")]
+[node name="BulletArea" type="Area2D" unique_id=1387364929 node_paths=PackedStringArray("collision_shape_2d", "sprite_2d", "force_innactive_timer", "sfx_player")]
 scale = Vector2(0.3, 0.3)
 collision_layer = 0
 script = ExtResource("1_dc4lx")
 collision_shape_2d = NodePath("CollisionShape2D")
 sprite_2d = NodePath("Sprite2D")
 force_innactive_timer = NodePath("ForceInnactiveTimer")
+sfx_player = NodePath("sfx_player")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=485486816]
 scale = Vector2(10, 10)
@@ -19,4 +20,4 @@ scale = Vector2(10, 10)
 wait_time = 10.0
 one_shot = true
 
-[node name="sfx_player" type="AudioStreamPlayer2D" parent="." unique_id=3912065814]
+[node name="sfx_player" type="AudioStreamPlayer2D" parent="." unique_id=-382901482]

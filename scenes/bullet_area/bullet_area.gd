@@ -14,7 +14,7 @@ var _source: Node = null
 @export var collision_shape_2d: CollisionShape2D
 @export var sprite_2d: Sprite2D
 @export var force_innactive_timer: Timer
-@onready var sfx_player: AudioStreamPlayer2D = $sfx_player
+@export var sfx_player: AudioStreamPlayer2D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -78,6 +78,8 @@ static func assign_properties_to_bullet(bullet: BulletArea, dir: Vector2, data: 
 	bullet.collision_mask = data.hit_mask
 	bullet.rotation = dir.angle()
 	bullet.sprite_2d.offset = data.offset
+	print(bullet.sfx_player)
+	print(data.shoot_sound)
 	bullet.sfx_player.stream = data.shoot_sound
 	
 	if source and source.is_in_group("player"):

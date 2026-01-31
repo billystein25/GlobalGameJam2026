@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="Bullet" format=3 uid="uid://tuq3s48fxa1f"]
 
 [ext_resource type="Script" uid="uid://8jhmqy4er0c1" path="res://custom resources/Bullets/bullet.gd" id="1_8kwxu"]
+[ext_resource type="AudioStream" uid="uid://bbxrj03xggdx4" path="res://assets/sounds/breaking.wav" id="2_wf1a5"]
 [ext_resource type="Texture2D" uid="uid://bw4e2moieka3p" path="res://assets/rock.png" id="2_xk037"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wf1a5"]
@@ -10,4 +11,5 @@ radius = 30.0
 script = ExtResource("1_8kwxu")
 collision_box = SubResource("CircleShape2D_wf1a5")
 texture = ExtResource("2_xk037")
+shoot_sound = ExtResource("2_wf1a5")
 metadata/_custom_type_script = "uid://8jhmqy4er0c1"

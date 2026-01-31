@@ -161,7 +161,7 @@ func leave() -> void:
 	sprite.scale = base_sprite_scale
 	acceleration = base_acceleration
 	deceleration = base_deceleration
-	hurtbox.shape = base_shape
+	hurtbox.set_deferred("shape", base_shape)
 
 func shoot() -> void:
 	if !bullet: return
