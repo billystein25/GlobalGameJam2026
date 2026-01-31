@@ -14,5 +14,5 @@ const enemy_type_to_enemy_data_uid: Dictionary[Enemy_resource.EnemyTypes, String
 func create_enemy(enemy_type: Enemy_resource.EnemyTypes) -> Enemy:
 	var new_enemy: Enemy = ENEMY_SCENE.instantiate()
 	var enemy_resource = load(enemy_type_to_enemy_data_uid[enemy_type])
-	new_enemy.set_values(enemy_resource)
+	new_enemy.enemy_resource = enemy_resource
 	return new_enemy

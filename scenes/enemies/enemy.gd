@@ -2,6 +2,7 @@ class_name Enemy
 extends CharacterBody2D
 
 signal request_spawn_bullet(pos: Vector2, dir: Vector2, data: Bullet, source: Node)
+signal died(me: Enemy)
 
 var isAlive = true
 var direction: Vector2 = Vector2.ZERO
@@ -34,13 +35,14 @@ func _ready() -> void:
 	if animated_sprite_2d.material:
 		animated_sprite_2d.material = animated_sprite_2d.material.duplicate()
 	time_to_shoot.timeout.connect(_on_request_shoot)
-	set_values(enemy_resource)
+	set_values()
 
-func set_values(resource: Enemy_resource) -> void:
-	time_to_shoot.wait_time = resource.bullet.seconds_per_shot
-	animated_sprite_2d.sprite_frames = resource.sprite_anime
-	animated_sprite_2d.offset = resource.offset
-	collision_shape_2d.shape = resource.collision_box
+func set_values() -> void:
+	time_to_shoot.wait_time = enemy_resource.bullet.seconds_per_shot
+	print(animated_sprite_2d)
+	animated_sprite_2d.sprite_frames = enemy_resource.sprite_anime
+	animated_sprite_2d.offset = enemy_resource.offset
+	collision_shape_2d.shape = enemy_resource.collision_box
 	
 	health_bar.max_value = health
 	health_bar.value = health
@@ -109,6 +111,7 @@ func anim():
 		animsprite.play("death")
 		await animsprite.animation_finished
 		queue_free()
+		died.emit(self)
 		
 	elif velocity.length_squared() > 100: # Running Animation (approx 10^2)
 		animsprite.play("walk")
