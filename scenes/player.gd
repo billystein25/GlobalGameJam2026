@@ -68,10 +68,10 @@ func _process(delta: float) -> void:
 	else:
 		sprite.play("walk")
 	
-	if mouse_pos.x < global_position.x:   #TODO: Test if sprite.flip_h = true is better
-		scale.x = -1
+	if mouse_pos.x > global_position.x:   #TODO: Test if sprite.flip_h = true is better
+		sprite.flip_h = true
 	else:
-		scale.x = 1
+		sprite.flip_h = false
 	
 	# Input handling for Grab/Leave
 	if Input.is_action_just_pressed("Jumb"): # Spacebar usually
