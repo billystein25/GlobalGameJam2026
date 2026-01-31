@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://dgx2ub3h1300o"]
+
+[ext_resource type="Texture2D" uid="uid://dg4vpirhbthk4" path="res://Animation Sprite 2D/Soul Animation UI.webp" id="1_ekrvn"]
+[ext_resource type="SpriteFrames" uid="uid://cdgr686w03x53" path="res://Animation Sprite 2D/Animations/background_field.tres" id="1_voi6i"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8rfti"]
+font_size = 24
+font_color = Color(0.73280114, 0.50386703, 0.26788285, 1)
+shadow_size = 5
+shadow_color = Color(0.23753911, 0.23753914, 0.23753911, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_8rfti"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ekrvn"]
+font = SubResource("FontVariation_8rfti")
+font_color = Color(0.45077968, 0.5899621, 1, 1)
+shadow_size = 4
+shadow_color = Color(0.82086635, 0.758558, 0.8277896, 1)
+stacked_outline_count = 1
+stacked_outline_0/size = 6
+stacked_outline_0/color = Color(0.10491943, 0.1386702, 0.28125, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_voi6i"]
+atlas = ExtResource("1_ekrvn")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqe7n"]
+atlas = ExtResource("1_ekrvn")
+region = Rect2(12, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5vgh"]
+atlas = ExtResource("1_ekrvn")
+region = Rect2(24, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_511w2"]
+atlas = ExtResource("1_ekrvn")
+region = Rect2(0, 12, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqj10"]
+atlas = ExtResource("1_ekrvn")
+region = Rect2(12, 12, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_td87e"]
+atlas = ExtResource("1_ekrvn")
+region = Rect2(24, 12, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38ksf"]
+atlas = ExtResource("1_ekrvn")
+region = Rect2(0, 24, 12, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hcxcl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_voi6i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lqe7n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5vgh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_511w2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqj10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_td87e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38ksf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=2046284048]
+
+[node name="UI" type="GridContainer" parent="." unique_id=1354555174]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -185.0
+offset_right = -81.94995
+offset_bottom = 61.0
+grow_horizontal = 0
+scale = Vector2(1.6699998, 1.79)
+
+[node name="Score" type="Label" parent="UI" unique_id=562142695]
+layout_mode = 2
+text = "Score:   0"
+label_settings = SubResource("LabelSettings_8rfti")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Souls" type="Label" parent="UI" unique_id=840262097]
+layout_direction = 3
+layout_mode = 2
+theme_override_constants/line_spacing = 3
+text = "Souls:   0"
+label_settings = SubResource("LabelSettings_ekrvn")
+
+[node name="Field Animation" type="AnimatedSprite2D" parent="." unique_id=405193744]
+z_index = -1
+position = Vector2(571, 330.00003)
+scale = Vector2(2.3999977, 2.4000018)
+sprite_frames = ExtResource("1_voi6i")
+animation = &"out"
+frame = 7
+frame_progress = 1.0
+
+[node name="Soul Animation" type="AnimatedSprite2D" parent="." unique_id=778224398]
+position = Vector2(992, 90.00001)
+scale = Vector2(4.774026, 5.0551186)
+sprite_frames = SubResource("SpriteFrames_hcxcl")
+autoplay = "default"
+frame_progress = 0.30828288

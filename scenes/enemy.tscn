@@ -6,7 +6,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_md0e3"]
 radius = 68.0
-height = 150.0
+height = 318.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1655233537]
 safe_margin = 9.144
@@ -19,7 +19,7 @@ texture = ExtResource("2_md0e3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=279762641]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1307537726]
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1307537726]
 position = Vector2(0, -68)
 shape = SubResource("CapsuleShape2D_md0e3")
 
@@ -28,3 +28,9 @@ stream = ExtResource("3_4ra3w")
 pitch_scale = 4.0
 
 [node name="snd_die" type="AudioStreamPlayer" parent="." unique_id=886338663]
+
+[node name="Control" type="Control" parent="." unique_id=362181409]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

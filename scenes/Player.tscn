@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cki75c4q6ug0d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5q5h1"]
+size = Vector2(300, 334.01)
+
+[node name="Area2D" type="Area2D" unique_id=1723239811]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1198880788]
+
+[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=619565118]
+shape = SubResource("RectangleShape2D_5q5h1")
