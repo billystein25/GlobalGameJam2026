@@ -11,6 +11,7 @@ enum MenuStates{
 var curr_menu_state: MenuStates = MenuStates.MAIN_MENU
 var is_start_menu := true
 
+@export_file("*.tscn") var load_scene: String
 @export_group("Node References")
 @export var main_menu: VBoxContainer
 @export var settings_menu: VBoxContainer
@@ -136,7 +137,8 @@ func set_menu_state(state: MenuStates) -> void:
 
 
 func _on_play_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/root/game_manager.tscn")
+	if load_scene:
+		get_tree().change_scene_to_file(load_scene)
 
 
 func _on_resume_button_pressed() -> void:
