@@ -4,6 +4,7 @@ extends Node
 @export_group("Node References")
 @export var enemies: Node
 @export var projectiles: Node
+@export var menu_ui: MenuUI
 
 
 var active_bullets: Array[BulletArea]
@@ -11,6 +12,9 @@ var innactive_bullets: Array[BulletArea]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if menu_ui:
+		menu_ui.set_menu_state(MenuUI.MenuStates.NONE)
+		menu_ui.is_start_menu = false
 	var player = get_tree().get_first_node_in_group("player")
 	if player:
 		if player.has_signal("request_spawn_bullet"):

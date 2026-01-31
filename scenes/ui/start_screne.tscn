@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dsx6xtgbau3lb"]
+
+[ext_resource type="PackedScene" uid="uid://jf3v1j7nrgyt" path="res://scenes/ui/start_menu_ui.tscn" id="1_q2lfi"]
+
+[node name="StartScrene" type="CanvasLayer" unique_id=1333345430]
+
+[node name="MenuUI" parent="." unique_id=683639668 instance=ExtResource("1_q2lfi")]
+load_scene = "uid://dl36k8kgol72g"
