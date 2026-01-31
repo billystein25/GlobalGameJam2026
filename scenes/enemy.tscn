@@ -30,15 +30,13 @@ enemy_resource = SubResource("Resource_xwavj")
 time_to_shoot = NodePath("TimeToShoot")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=279762641]
-position = Vector2(2, -19.999996)
+position = Vector2(3, -54)
 scale = Vector2(6, 6.0625005)
 sprite_frames = ExtResource("5_nenq2")
 animation = &"death"
-frame = 12
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1307537726]
-position = Vector2(-3, -41)
+position = Vector2(0, -55)
 shape = SubResource("CapsuleShape2D_md0e3")
 
 [node name="snd_hit" type="AudioStreamPlayer" parent="." unique_id=1750178298]

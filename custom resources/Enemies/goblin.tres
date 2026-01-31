@@ -4,8 +4,17 @@
 [ext_resource type="Resource" uid="uid://ctvwll2n136kg" path="res://custom resources/Bullets/shuriken.tres" id="1_go0ov"]
 [ext_resource type="SpriteFrames" uid="uid://dcfl6kmciyqoj" path="res://custom resources/Enemies/animations/goblin_animation.tres" id="3_5hway"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_h2urp"]
+radius = 40.0
+
 [resource]
 script = ExtResource("1_5caj0")
 bullet = ExtResource("1_go0ov")
+health = 30.0
+power = 30.0
+rank = 99999
+type = 1
+offset = Vector2(-0.5, 3)
+collision_box = SubResource("CircleShape2D_h2urp")
 sprite_anime = ExtResource("3_5hway")
 metadata/_custom_type_script = "uid://bmi2be76ohiii"

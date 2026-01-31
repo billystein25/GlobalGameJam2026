@@ -3,39 +3,11 @@
 [ext_resource type="Script" uid="uid://hmw2bx6cbghr" path="res://scenes/root/game_manager.gd" id="1_gm_script"]
 [ext_resource type="PackedScene" uid="uid://bi38a0e7ae2gf" path="res://scenes/enemy.tscn" id="2_enemy"]
 [ext_resource type="Resource" uid="uid://4pljwajt5qt1" path="res://custom resources/Enemies/goblin.tres" id="3_0i65v"]
+[ext_resource type="Resource" uid="uid://w338p4fthl3h" path="res://custom resources/Enemies/troll.tres" id="3_6t4nq"]
 [ext_resource type="PackedScene" uid="uid://cki75c4q6ug0d" path="res://scenes/player.tscn" id="3_player"]
-[ext_resource type="Script" uid="uid://8jhmqy4er0c1" path="res://custom resources/bullet.gd" id="3_xgagk"]
-[ext_resource type="Script" uid="uid://bmi2be76ohiii" path="res://scenes/enemies/enemies_resource.gd" id="4_6t4nq"]
-
-[sub_resource type="Resource" id="Resource_xwq2p"]
-script = ExtResource("3_xgagk")
-hit_mask = 3
-metadata/_custom_type_script = "uid://8jhmqy4er0c1"
-
-[sub_resource type="Resource" id="Resource_rpnqa"]
-script = ExtResource("4_6t4nq")
-bullet = SubResource("Resource_xwq2p")
-metadata/_custom_type_script = "uid://bmi2be76ohiii"
-
-[sub_resource type="Resource" id="Resource_xgagk"]
-script = ExtResource("3_xgagk")
-hit_mask = 3
-metadata/_custom_type_script = "uid://8jhmqy4er0c1"
-
-[sub_resource type="Resource" id="Resource_6t4nq"]
-script = ExtResource("4_6t4nq")
-bullet = SubResource("Resource_xgagk")
-metadata/_custom_type_script = "uid://bmi2be76ohiii"
-
-[sub_resource type="Resource" id="Resource_lmytu"]
-script = ExtResource("3_xgagk")
-hit_mask = 3
-metadata/_custom_type_script = "uid://8jhmqy4er0c1"
-
-[sub_resource type="Resource" id="Resource_3hcu4"]
-script = ExtResource("4_6t4nq")
-bullet = SubResource("Resource_lmytu")
-metadata/_custom_type_script = "uid://bmi2be76ohiii"
+[ext_resource type="Resource" uid="uid://fc3ilhclgyh6" path="res://custom resources/Enemies/vampire.tres" id="6_rpnqa"]
+[ext_resource type="Resource" uid="uid://ctnc8t8arklb8" path="res://custom resources/Enemies/elf.tres" id="6_xwq2p"]
+[ext_resource type="Resource" uid="uid://c8oydlxfohjk5" path="res://custom resources/Enemies/wizard.tres" id="7_rpnqa"]
 
 [node name="TestWorld" type="Node" unique_id=1292796032 node_paths=PackedStringArray("enemies", "projectiles")]
 script = ExtResource("1_gm_script")
@@ -44,18 +16,25 @@ projectiles = NodePath("Projectiles")
 
 [node name="Enemies" type="Node" parent="." unique_id=773052168]
 
-[node name="Enemy_Middle" parent="Enemies" unique_id=1752426902 instance=ExtResource("2_enemy")]
+[node name="Troll" parent="Enemies" unique_id=1752426902 instance=ExtResource("2_enemy")]
 position = Vector2(500, 100)
-enemy_resource = SubResource("Resource_rpnqa")
+enemy_resource = ExtResource("3_6t4nq")
+
+[node name="Goblin" parent="Enemies" unique_id=1773008084 instance=ExtResource("2_enemy")]
+position = Vector2(100, 300)
 enemy_resource = ExtResource("3_0i65v")
 
-[node name="Enemy_Left" parent="Enemies" unique_id=1773008084 instance=ExtResource("2_enemy")]
-position = Vector2(100, 300)
-enemy_resource = SubResource("Resource_6t4nq")
+[node name="Elf" parent="Enemies" unique_id=1188432961 instance=ExtResource("2_enemy")]
+position = Vector2(852, 202)
+enemy_resource = ExtResource("6_xwq2p")
 
-[node name="Enemy_Right" parent="Enemies" unique_id=1188432961 instance=ExtResource("2_enemy")]
-position = Vector2(900, 300)
-enemy_resource = SubResource("Resource_3hcu4")
+[node name="Vampire" parent="Enemies" unique_id=1655233537 instance=ExtResource("2_enemy")]
+position = Vector2(195, 544)
+enemy_resource = ExtResource("6_rpnqa")
+
+[node name="Wizard" parent="Enemies" unique_id=1500978045 instance=ExtResource("2_enemy")]
+position = Vector2(914, 417)
+enemy_resource = ExtResource("7_rpnqa")
 
 [node name="Projectiles" type="Node" parent="." unique_id=2009951698]
 

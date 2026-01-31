@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ds7sgtrl6keno" path="res://assets/red.png" id="2_j15dj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j15dj"]
+radius = 40.0
 
 [resource]
 script = ExtResource("1_6j62c")

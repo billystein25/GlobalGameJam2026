@@ -2,7 +2,7 @@ extends Area2D
 
 signal request_spawn_bullet(pos: Vector2, dir: Vector2, data: Bullet, source: Node)
 
-var energy: int = 4
+var energy: int = 100
 var onEnemy = false
 var health: float = 10
 var souls: int = 0 
@@ -15,12 +15,12 @@ var shot_timer: float = 0.0
 
 var mouse_pos: Vector2
 @onready var grab_area: Area2D = $GrabArea
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @export var enemy_data: Enemy_resource
-var enemy_type 
+var enemy_type: Enemy_resource.EnemyTypes
 @export_flags_2d_physics var bullet_hit_mask: int = 2
+var current_enemy_type: Enemy_resource.EnemyTypes
 
-var base_texture: Texture
 var base_acceleration: float
 var base_deceleration: float
 var base_shape: Shape2D
@@ -32,7 +32,7 @@ var potential_grab_target: Enemy = null
 
 func _ready() -> void:
 	add_to_group("player")
-	base_texture = sprite.texture
+	sprite.play("idle")
 	base_acceleration = acceleration
 	base_deceleration = deceleration
 	base_shape = hurtbox.shape
@@ -53,6 +53,21 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	mouse_pos = get_global_mouse_position()
 
+	if onEnemy:
+		match current_enemy_type:
+			Enemy_resource.EnemyTypes.WIZARD:
+				sprite.play("wizard")
+			Enemy_resource.EnemyTypes.TROLL:
+				sprite.play("troll")
+			Enemy_resource.EnemyTypes.ELF:
+				sprite.play("elf")
+			Enemy_resource.EnemyTypes.VAMPIRE:
+				sprite.play("vampire")
+			_:
+				sprite.play("walk")
+	else:
+		sprite.play("walk")
+	
 	if mouse_pos.x < global_position.x:   #TODO: Test if sprite.flip_h = true is better
 		scale.x = -1
 	else:
@@ -90,21 +105,16 @@ func try_grab(enemy: Enemy) -> void:
 func grab(enemy: Enemy) -> void:
 	enemy_data = enemy.enemy_resource
 	enemy_data.bullet.hit_mask = bullet_hit_mask
+	current_enemy_type = enemy_data.type
+	
 	
 	# Transfer stats
 	enemy_health = enemy_data.health 
 	bullet = enemy_data.bullet
 	enemy_type = enemy_data.type
 	
-	# Visuals
-	# Temporary texture override
-	sprite.texture = load("res://assets/icon.png")
-	sprite.scale = Vector2.ONE
-	
-	# if enemy_data.texture:
-	#	sprite.texture = enemy_data.texture
-	#	# Reset sprite scale to 1,1 for enemies (assuming they don't use the mask's 4x scale)
-	#	sprite.scale = Vector2.ONE 
+	hurtbox.shape = enemy_data.collision_box
+	sprite.scale = Vector2(5,5)
 
 	
 	if enemy_data.collision_box:
@@ -127,7 +137,6 @@ func leave() -> void:
 	bullet = null
 	
 	# Restore base stats
-	sprite.texture = base_texture
 	sprite.scale = base_sprite_scale
 	acceleration = base_acceleration
 	deceleration = base_deceleration
