@@ -25,5 +25,6 @@ enum EnemyTypes{
 @export var collision_box: Shape2D
 @export var texture: Texture
 @export var sprite_anime: SpriteFrames
+@export var death_sound: AudioStream
 
 # *************************************
