@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Enemy_resource" format=3 uid="uid://4pljwajt5qt1"]
+
+[ext_resource type="Script" uid="uid://bmi2be76ohiii" path="res://scenes/enemies/enemies_resource.gd" id="1_5caj0"]
+[ext_resource type="Resource" uid="uid://ctvwll2n136kg" path="res://custom resources/Bullets/shuriken.tres" id="1_go0ov"]
+
+[resource]
+script = ExtResource("1_5caj0")
+bullet = ExtResource("1_go0ov")
+metadata/_custom_type_script = "uid://bmi2be76ohiii"
