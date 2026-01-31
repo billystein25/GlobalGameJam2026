@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c5puif3150l30"]
+
+[ext_resource type="Shader" uid="uid://ya1h30t3n0y4" path="res://shaders/alpha_lock_color_change_shader.gdshader" id="1_5kpav"]
+
+[resource]
+shader = ExtResource("1_5kpav")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/progress = 0.0

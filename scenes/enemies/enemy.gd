@@ -34,7 +34,7 @@ func _ready() -> void:
 	animated_sprite_2d.sprite_frames = enemy_resource.sprite_anime
 	animated_sprite_2d.offset = enemy_resource.offset
 	collision_shape_2d.shape = enemy_resource.collision_box
-		
+	
 
 func _physics_process(delta: float) -> void:
 	
@@ -83,6 +83,14 @@ func got_hit(currentBullet: Bullet, bullet_direction):
 	health -= currentBullet.damage
 	snd_hit.play()
 	velocity = bullet_direction * 500
+	var tween := create_tween()
+	tween.tween_method(tween_shader_progress, 0.0, 1.0, 0.01)
+	tween.tween_method(tween_shader_progress, 1.0, 0.0, 0.05)
+
+
+func tween_shader_progress(value: float) -> void:
+	if animated_sprite_2d.material is ShaderMaterial:
+		animated_sprite_2d.material.set_shader_parameter("progress", value)
 
 
 func be_possessed() -> void:

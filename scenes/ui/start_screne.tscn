@@ -5,4 +5,4 @@
 [node name="StartScrene" type="CanvasLayer" unique_id=1333345430]
 
 [node name="MenuUI" parent="." unique_id=683639668 instance=ExtResource("1_q2lfi")]
-load_scene = "uid://dl36k8kgol72g"
+load_scene = "uid://dthay054pr1bi"
