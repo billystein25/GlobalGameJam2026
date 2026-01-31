@@ -439,6 +439,14 @@ frame_progress = 0.54745257
 position = Vector2(-1, -13)
 shape = SubResource("CircleShape2D_g2els")
 
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1137083049]
+visible = false
+offset_left = -33.0
+offset_top = -101.0
+offset_right = 35.0
+offset_bottom = -94.0
+show_percentage = false
+
 [node name="GrabArea" type="Area2D" parent="." unique_id=1569190510]
 position = Vector2(3, 1)
 collision_layer = 16

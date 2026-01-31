@@ -5,7 +5,7 @@ signal on_leave(animation: AnimatedSprite2D, position: Vector2)
 
 var energy: int = 100
 var onEnemy = false
-var health: float = 10
+var health: float = 1
 var souls: int = 0 
 var acceleration: float = 100.0
 var speed = Vector2.ZERO
@@ -29,6 +29,9 @@ var base_sprite_scale: Vector2
 
 var potential_grab_target: Enemy = null 
 @onready var hurtbox: CollisionShape2D = $PlayerHurtbox
+@onready var health_bar: ProgressBar = $HealthBar
+
+@export var decay_rate: float = 2.0 # Health lost per second while possessing
 
 
 func _ready() -> void:
@@ -45,6 +48,12 @@ func _physics_process(delta: float) -> void:
 	speed += delta * direction * acceleration
 	speed *= 1.0 - deceleration
 	position += speed
+	
+	if onEnemy:
+		enemy_health -= decay_rate * delta
+		health_bar.value = enemy_health
+		if enemy_health <= 0:
+			leave()
 	
 	if onEnemy and bullet:
 		shot_timer -= delta
@@ -109,10 +118,14 @@ func grab(enemy: Enemy) -> void:
 	current_enemy_type = enemy_data.type
 	
 	
-	# Transfer stats
-	enemy_health = enemy_data.health 
+	enemy_health = enemy.health 
 	bullet = enemy_data.bullet
 	enemy_type = enemy_data.type
+	
+	# init health bar
+	health_bar.visible = true
+	health_bar.max_value = enemy_data.health # Use resource health as MAX
+	health_bar.value = enemy_health          # Use instance health as CURRENT
 	
 	hurtbox.shape = enemy_data.collision_box
 	sprite.scale*=1.5
@@ -137,6 +150,8 @@ func leave() -> void:
 	var newAnimSprite := AnimatedSprite2D.new()
 	newAnimSprite.sprite_frames = enemy_data.sprite_anime
 		
+	health_bar.visible = false
+	
 	on_leave.emit(newAnimSprite, global_position, enemy_data.type == Enemy_resource.EnemyTypes.WIZARD)
 	
 	enemy_data = null
@@ -171,6 +186,7 @@ func _on_grab_area_body_exited(body: Node2D) -> void:
 
 
 func got_hit(current_bullet: Bullet, bullet_direction: Vector2) -> void:
+	health_bar.value = enemy_health
 	if onEnemy:
 		enemy_health -= current_bullet.damage
 		print("Enemy Body Hit! HP: ", enemy_health)

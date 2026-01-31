@@ -76,7 +76,7 @@ static func assign_properties_to_bullet(bullet: BulletArea, dir: Vector2, data: 
 	bullet.sprite_2d.offset = data.offset
 	
 	if source and source.is_in_group("player"):
-		bullet.modulate = Color(0, 1, 0) # Green for player
+		bullet.modulate = Color(0, 0.2, 0) # Green for player
 	else:
 		bullet.modulate = Color(1, 1, 1) # Normal/White for enemies
 		

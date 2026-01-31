@@ -18,6 +18,8 @@ var isAlive = true
 @export var time_to_shoot: Timer
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var health_bar: ProgressBar = $HealthBar
+@onready var rank_label: Label = $RankLabel
 
 
 var knockback = Vector2.ZERO
@@ -29,11 +31,40 @@ var knockback = Vector2.ZERO
 
 
 func _ready() -> void:
+	if animated_sprite_2d.material:
+		animated_sprite_2d.material = animated_sprite_2d.material.duplicate()
 	time_to_shoot.timeout.connect(_on_request_shoot)
 	time_to_shoot.wait_time = enemy_resource.bullet.seconds_per_shot
 	animated_sprite_2d.sprite_frames = enemy_resource.sprite_anime
 	animated_sprite_2d.offset = enemy_resource.offset
 	collision_shape_2d.shape = enemy_resource.collision_box
+	
+	health_bar.max_value = health
+	health_bar.value = health
+	
+	if enemy_resource.type == Enemy_resource.EnemyTypes.GOBLIN:
+		rank_label.text = "X"
+		rank_label.modulate = Color(1, 0, 0)
+	else:
+		rank_label.text = str(enemy_resource.rank)
+		rank_label.modulate = Color(1, 1, 1)
+	
+	# Adjust Health Bar Position
+	var shape = collision_shape_2d.shape
+	var top_offset = 0.0
+	
+	if shape is CapsuleShape2D:
+		top_offset = shape.height / 2.0
+	elif shape is CircleShape2D:
+		top_offset = shape.radius
+	elif shape is RectangleShape2D:
+		top_offset = shape.size.y / 2.0
+		
+	health_bar.position.y = collision_shape_2d.position.y - top_offset - 20
+	health_bar.position.x = -health_bar.size.x / 2.0
+	
+	rank_label.position.y = health_bar.position.y - rank_label.size.y
+	rank_label.position.x = -rank_label.size.x / 2.0
 	
 
 func _physics_process(delta: float) -> void:
@@ -81,6 +112,7 @@ func anim():
 		
 func got_hit(currentBullet: Bullet, bullet_direction):
 	health -= currentBullet.damage
+	health_bar.value = health
 	snd_hit.play()
 	velocity = bullet_direction * 500
 	var tween := create_tween()
