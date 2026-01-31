@@ -34,10 +34,13 @@ func _ready() -> void:
 	if animated_sprite_2d.material:
 		animated_sprite_2d.material = animated_sprite_2d.material.duplicate()
 	time_to_shoot.timeout.connect(_on_request_shoot)
-	time_to_shoot.wait_time = enemy_resource.bullet.seconds_per_shot
-	animated_sprite_2d.sprite_frames = enemy_resource.sprite_anime
-	animated_sprite_2d.offset = enemy_resource.offset
-	collision_shape_2d.shape = enemy_resource.collision_box
+	set_values(enemy_resource)
+
+func set_values(resource: Enemy_resource) -> void:
+	time_to_shoot.wait_time = resource.bullet.seconds_per_shot
+	animated_sprite_2d.sprite_frames = resource.sprite_anime
+	animated_sprite_2d.offset = resource.offset
+	collision_shape_2d.shape = resource.collision_box
 	
 	health_bar.max_value = health
 	health_bar.value = health
@@ -66,6 +69,7 @@ func _ready() -> void:
 	rank_label.position.y = health_bar.position.y - rank_label.size.y
 	rank_label.position.x = -rank_label.size.x / 2.0
 	
+
 
 func _physics_process(delta: float) -> void:
 	

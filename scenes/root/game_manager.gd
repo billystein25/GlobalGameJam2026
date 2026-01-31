@@ -3,14 +3,28 @@ extends Node
 
 
 @export_file("*.tscn") var load_scene: String
+## The initial interval to spawn an enemy. A random enemy is spawned every this seconds.
+@export var initial_time_to_spawn: float = 5.0
+## The interval to spawn an enemy. A random enemy is spawned every this seconds.
+@onready var time_to_spawn := initial_time_to_spawn
+## [member time_to_spawn] is reduced by [member depletion_value] every this seconds.
+@export var deplete_time_to_spawn_interval: float = 5.0
+## [member time_to_spawn] is reduced by this every [member deplete_time_to_spawn_interval] seconds.
+@export var depletion_value: float = 0.5
+## [member time_to_spawn] will never be lower than this.
+@export var min_time_to_spawn: float = 3.0
 @export_group("Node References")
 @export var enemies: Node
 @export var projectiles: Node
 @export var menu_ui: MenuUI
+@export var spawners: Node
+@export var enemy_spawn_timer: Timer
 
 
 var active_bullets: Array[BulletArea]
 var innactive_bullets: Array[BulletArea]
+@onready var spawners_array: Array[EnemySpawner]
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,6 +40,17 @@ func _ready() -> void:
 			
 	for enemy in get_tree().get_nodes_in_group("Enemy"):
 		enemy.request_spawn_bullet.connect(_on_enemy_spawn_bullet)
+	
+	for spawner in spawners.get_children():
+		if spawner is EnemySpawner:
+			spawners_array.append(spawner)
+	
+	enemy_spawn_timer.timeout.connect(spawn_random_enemy)
+
+
+func spawn_random_enemy() -> void:
+	var enemy: Enemy_resource.EnemyTypes = Enemy_resource.EnemyTypes.keys().pick_random()
+	var spawner: EnemySpawner = spawners_array.pick_random()
 
 
 func _on_enemy_spawn_bullet(pos: Vector2, dir: Vector2, data: Bullet, source: Node) -> void:
