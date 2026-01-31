@@ -9,22 +9,26 @@ extends Node
 var active_bullets: Array[BulletArea]
 var innactive_bullets: Array[BulletArea]
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		if player.has_signal("request_spawn_bullet"):
+			player.request_spawn_bullet.connect(_on_enemy_spawn_bullet)
+			
 	for enemy in get_tree().get_nodes_in_group("Enemy"):
 		enemy.request_spawn_bullet.connect(_on_enemy_spawn_bullet)
 
 
-func _on_enemy_spawn_bullet(pos: Vector2, dir: Vector2, data: Bullet) -> void:
+func _on_enemy_spawn_bullet(pos: Vector2, dir: Vector2, data: Bullet, source: Node) -> void:
 	print("shoot from manager")
 	var this_bullet: BulletArea
 	if innactive_bullets.size() > 0:
 		this_bullet = innactive_bullets.pop_front()
-		BulletArea.assign_properties_to_bullet(this_bullet, dir, data)
+		BulletArea.assign_properties_to_bullet(this_bullet, dir, data, source)
 		this_bullet.activate()
 	else:
-		this_bullet = BulletArea.create_bullet(dir, data)
+		this_bullet = BulletArea.create_bullet(dir, data, source)
 		this_bullet.deactivate_bullet.connect(_on_bullet_deactivate)
 		projectiles.add_child(this_bullet)
 	active_bullets.append(this_bullet)

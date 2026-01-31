@@ -1,17 +1,33 @@
 [gd_scene format=3 uid="uid://cki75c4q6ug0d"]
 
 [ext_resource type="Script" uid="uid://svh58401w1fa" path="res://scenes/player.gd" id="1_3vyb7"]
-[ext_resource type="Texture2D" uid="uid://cux0kyit1ob7o" path="res://icon.svg" id="2_g2els"]
+[ext_resource type="Texture2D" uid="uid://tn7cv1acjs4l" path="res://assets/mask_idleanimation-2.png.png" id="2_g2els"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
+radius = 26.019224
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
+size = Vector2(81, 75)
 
 [node name="Player" type="Area2D" unique_id=1181188848]
 position = Vector2(285, 160)
 script = ExtResource("1_3vyb7")
 
+[node name="PlayerHurtbox" type="CollisionShape2D" parent="." unique_id=758620158]
+position = Vector2(-1, -13)
+shape = SubResource("CircleShape2D_g2els")
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1015524492]
 position = Vector2(-1, 2)
+scale = Vector2(4, 4)
 texture = ExtResource("2_g2els")
 
 [node name="GrabArea" type="Area2D" parent="." unique_id=1569190510]
 position = Vector2(3, 1)
 
+[node name="GrabAreaCollisionBox" type="CollisionShape2D" parent="GrabArea" unique_id=1671240828]
+position = Vector2(-3.5, -13.5)
+shape = SubResource("RectangleShape2D_qhqgy")
+
 [connection signal="body_entered" from="GrabArea" to="." method="_on_grab_area_body_entered"]
+[connection signal="body_exited" from="GrabArea" to="." method="_on_grab_area_body_exited"]

@@ -1,7 +1,7 @@
 class_name Enemy
 extends CharacterBody2D
 
-signal request_spawn_bullet(pos: Vector2, dir: Vector2, data: Bullet)
+signal request_spawn_bullet(pos: Vector2, dir: Vector2, data: Bullet, source: Node)
 
 var isAlive = true
 
@@ -38,28 +38,36 @@ func _physics_process(delta: float) -> void:
 			isAlive = false
 			
 		#knockback = knockback.move_toward(Vector2.ZERO, knockback_recovery)
-		var direction = global_position.direction_to(Vector2(100,100))
-		velocity += delta * direction * movementspeed * 5
+		var direction = global_position.direction_to(player.position)
+		velocity += delta * direction * movementspeed * 3
 		velocity = velocity.limit_length(maxspeed)
 		animsprite.flip_h = direction.x > 0
 		
 		move_and_slide()
-		
+	
+	anim() # Ensure animation state is updated every frame
+
 
 func _on_request_shoot() -> void:
+	if !isAlive: return # Don't shoot if dead
 	for i in enemy_resource.bullet.bullets_per_shot:
-		request_spawn_bullet.emit(position, position.direction_to(player.position), enemy_resource.bullet)
+		request_spawn_bullet.emit(position, position.direction_to(player.position), enemy_resource.bullet, self)
 	time_to_shoot.start()
 
 
 func anim():
 	if !isAlive:
+		if animsprite.animation == "death": return # Prevent re-triggering death logic
+		
+		# Death Logic
+		if player and player.has_method("kill_enemy"):
+			player.kill_enemy()
 		snd_die.play()
 		animsprite.play("death")
 		await animsprite.animation_finished
 		queue_free()
 		
-	elif velocity.x**2 + velocity.y**2 >10: #Running Animation
+	elif velocity.length_squared() > 100: # Running Animation (approx 10^2)
 		animsprite.play("walk")
 	else:
 		animsprite.play("idle")
@@ -70,3 +78,8 @@ func got_hit(currentBullet: Bullet, bullet_direction):
 	health -= currentBullet.damage
 	snd_hit.play()
 	velocity = bullet_direction * 500
+
+
+func be_possessed() -> void:
+	# Add any specific logic here (particles, sounds, score)
+	queue_free()
