@@ -18,3 +18,5 @@ scale = Vector2(10, 10)
 [node name="ForceInnactiveTimer" type="Timer" parent="." unique_id=1137557993]
 wait_time = 10.0
 one_shot = true
+
+[node name="sfx_player" type="AudioStreamPlayer2D" parent="." unique_id=3912065814]

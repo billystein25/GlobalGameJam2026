@@ -29,6 +29,6 @@ var seconds_per_shot: float = 1.0 / shots_per_second
 @export var collision_box: Shape2D
 @export_flags_2d_physics var hit_mask: int = 1
 @export var texture: Texture
-
+@export var shoot_sound: AudioStream
 
 # *************************************

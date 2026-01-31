@@ -41,6 +41,7 @@ func set_values(resource: Enemy_resource) -> void:
 	animated_sprite_2d.sprite_frames = resource.sprite_anime
 	animated_sprite_2d.offset = resource.offset
 	collision_shape_2d.shape = resource.collision_box
+	snd_die.stream = resource.death_sound
 	
 	health_bar.max_value = health
 	health_bar.value = health

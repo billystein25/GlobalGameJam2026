@@ -14,6 +14,7 @@ var _source: Node = null
 @export var collision_shape_2d: CollisionShape2D
 @export var sprite_2d: Sprite2D
 @export var force_innactive_timer: Timer
+@onready var sfx_player: AudioStreamPlayer2D = $sfx_player
 
 
 # Called when the node enters the scene tree for the first time.
@@ -21,6 +22,7 @@ func _ready() -> void:
 	body_entered.connect(_on_hit_body)
 	area_entered.connect(_on_hit_area)
 	force_innactive_timer.timeout.connect(_on_force_innactive)
+	
 
 func _physics_process(delta: float) -> void:
 	position += _direction * _speed * delta
@@ -38,6 +40,8 @@ func activate() -> void:
 	set_deferred("monitoring", true)
 	visible = true
 	force_innactive_timer.start()
+	if sfx_player.stream:
+		sfx_player.play()
 
 
 func _on_hit_body(body: Node2D) -> void:
@@ -74,6 +78,7 @@ static func assign_properties_to_bullet(bullet: BulletArea, dir: Vector2, data: 
 	bullet.collision_mask = data.hit_mask
 	bullet.rotation = dir.angle()
 	bullet.sprite_2d.offset = data.offset
+	bullet.sfx_player.stream = data.shoot_sound
 	
 	if source and source.is_in_group("player"):
 		bullet.modulate = Color(0, 0.2, 0) # Green for player
