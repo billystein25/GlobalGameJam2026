@@ -21,11 +21,14 @@ var seconds_per_shot: float = 1.0 / shots_per_second
 	set(value):
 		max_bullet_speed = value
 		min_bullet_speed = minf(min_bullet_speed, max_bullet_speed)
+		
+@export var offset: Vector2 = Vector2.ZERO
 ## In degrees
 @export var spread: float = 0.0
 @export_group("Child Properties")
 @export var collision_box: Shape2D
 @export_flags_2d_physics var hit_mask: int = 1
 @export var texture: Texture
+
 
 # *************************************
