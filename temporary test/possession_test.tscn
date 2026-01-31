@@ -46,11 +46,8 @@ projectiles = NodePath("Projectiles")
 
 [node name="Enemy_Middle" parent="Enemies" unique_id=1752426902 instance=ExtResource("2_enemy")]
 position = Vector2(500, 100)
-<<<<<<< HEAD
 enemy_resource = SubResource("Resource_rpnqa")
-=======
 enemy_resource = ExtResource("3_0i65v")
->>>>>>> 73e90c39c42d0327d8163055c3d8a21092c07c08
 
 [node name="Enemy_Left" parent="Enemies" unique_id=1773008084 instance=ExtResource("2_enemy")]
 position = Vector2(100, 300)
