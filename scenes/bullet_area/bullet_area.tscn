@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://dhn27ykui53l3" path="res://scenes/bullet_area/bullet_area.gd" id="1_dc4lx"]
 
 [node name="BulletArea" type="Area2D" unique_id=1387364929 node_paths=PackedStringArray("collision_shape_2d", "sprite_2d", "force_innactive_timer")]
+scale = Vector2(0.3, 0.3)
 collision_layer = 0
-collision_mask = 0
 script = ExtResource("1_dc4lx")
 collision_shape_2d = NodePath("CollisionShape2D")
 sprite_2d = NodePath("Sprite2D")

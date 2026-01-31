@@ -19,6 +19,12 @@ config/icon="res://icon.svg"
 
 Globals="*uid://cewk2hstroso8"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/resizable=false
+
 [global_group]
 
 Enemy="All enemies should be in this group"
@@ -69,6 +75,7 @@ Jumb={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://hmw2bx6cbghr" path="res://scenes/root/game_manager.gd" id="1_2ofal"]
 [ext_resource type="PackedScene" uid="uid://bi38a0e7ae2gf" path="res://scenes/enemy.tscn" id="2_r7s56"]
+[ext_resource type="PackedScene" uid="uid://cki75c4q6ug0d" path="res://scenes/player.tscn" id="3_vjrgi"]
 
 [node name="GameManager" type="Node" unique_id=993008258 node_paths=PackedStringArray("enemies", "projectiles")]
 script = ExtResource("1_2ofal")
@@ -17,3 +18,5 @@ position = Vector2(95, 192)
 
 [node name="Node" type="Node2D" parent="." unique_id=1122484952 groups=["player"]]
 position = Vector2(918, 375)
+
+[node name="Player" parent="." unique_id=1181188848 instance=ExtResource("3_vjrgi")]
