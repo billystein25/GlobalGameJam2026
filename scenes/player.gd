@@ -198,4 +198,4 @@ func got_hit(current_bullet: Bullet, bullet_direction: Vector2) -> void:
 		if health <= 0:
 			print("Player Died!")
 			# TODO: Add game over logic here
-			#queue_free()
+			queue_free()
