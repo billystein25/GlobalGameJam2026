@@ -41,6 +41,18 @@ var curr_num_enemies: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Add background music
+	var music_player = AudioStreamPlayer.new()
+	music_player.name = "BackgroundMusic"
+	var music_stream = load("res://assets/sounds/Glorious Morning.mp3")
+	if music_stream:
+		music_player.stream = music_stream
+		music_player.bus = "Music"
+		add_child(music_player)
+		music_player.play()
+	else:
+		print("Music file not found!")
+
 	if background_animation:
 		background_animation.visible = true
 		background_animation.play("open")
