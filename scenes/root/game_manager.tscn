@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://hmw2bx6cbghr" path="res://scenes/root/game_manager.gd" id="1_2ofal"]
 [ext_resource type="PackedScene" uid="uid://bi38a0e7ae2gf" path="res://scenes/enemy.tscn" id="2_r7s56"]
 [ext_resource type="PackedScene" uid="uid://cki75c4q6ug0d" path="res://scenes/player.tscn" id="3_vjrgi"]
-[ext_resource type="PackedScene" uid="uid://jf3v1j7nrgyt" path="res://scenes/ui/start_menu_ui.tscn" id="4_88j5r"]
+[ext_resource type="PackedScene" uid="uid://jf3v1j7nrgyt" path="res://scenes/ui/menu_ui.tscn" id="4_88j5r"]
 
 [node name="GameManager" type="Node" unique_id=993008258 node_paths=PackedStringArray("enemies", "projectiles", "menu_ui")]
 script = ExtResource("1_2ofal")

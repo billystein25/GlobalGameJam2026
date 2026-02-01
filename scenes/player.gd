@@ -1,9 +1,17 @@
+class_name Player
 extends Area2D
 
 signal request_spawn_bullet(pos: Vector2, dir: Vector2, data: Bullet, source: Node)
 signal on_leave(animation: AnimatedSprite2D, position: Vector2)
+signal update_energy(value: int)
+signal update_score(value: int)
 
-var energy: int = 100
+var energy: int = 100:
+	set(value):
+		if value > energy:
+			update_score.emit(value)
+		energy = value
+		update_energy.emit(energy)
 var onEnemy = false
 var health: float = 1
 var souls: int = 0 

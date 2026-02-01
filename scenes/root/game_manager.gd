@@ -26,6 +26,7 @@ extends Node
 @export var enemies: Node
 @export var projectiles: Node
 @export var menu_ui: MenuUI
+@export var info_ui: InfoUI
 @export var spawners: Node
 @export var enemy_spawn_timer: Timer
 @export var increase_spawn_interval_timer: Timer
@@ -44,12 +45,20 @@ func _ready() -> void:
 		menu_ui.load_scene = load_scene
 		menu_ui.set_menu_state(MenuUI.MenuStates.NONE)
 		menu_ui.is_start_menu = false
-	var player = get_tree().get_first_node_in_group("player")
+	var player: Player = get_tree().get_first_node_in_group("player")
 	player.on_leave.connect(on_leave_manager)
 	if player:
 		if player.has_signal("request_spawn_bullet"):
 			player.request_spawn_bullet.connect(_on_enemy_spawn_bullet)
-			
+		player.update_energy.connect(
+			func(value: int):
+				info_ui.set_souls_label(value)
+		)
+		player.update_score.connect(
+			func(value: int):
+				info_ui.set_score_label(value)
+		)
+		
 	for enemy in get_tree().get_nodes_in_group("Enemy"):
 		enemy.request_spawn_bullet.connect(_on_enemy_spawn_bullet)
 	
