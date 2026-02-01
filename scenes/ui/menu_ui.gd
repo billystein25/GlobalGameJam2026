@@ -40,6 +40,7 @@ var is_start_menu := true
 @export var dm_retry_button: Button
 @export var dm_quit_button: Button
 
+@onready var background: TextureRect = $Background
 
 @onready var btn_to_func: Dictionary[Button, Callable] = {
 	# main menu
@@ -67,7 +68,8 @@ var is_start_menu := true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for btn in btn_to_func:
-		btn.pressed.connect(btn_to_func[btn])
+		if btn:
+			btn.pressed.connect(btn_to_func[btn])
 	for slider in slider_value_changed_to_func:
 		slider.value_changed.connect(slider_value_changed_to_func[slider])
 	set_menu_state(curr_menu_state)
@@ -118,9 +120,21 @@ func _pause() -> void:
 
 func set_menu_state(state: MenuStates) -> void:
 	print("Set Menu State to: ", state)
+	visible = true
+	if background:
+		background.visible = is_start_menu
+	
 	curr_menu_state = state
+	
+	if state == MenuStates.DEATH_MENU:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		if dm_retry_button:
+			dm_retry_button.grab_focus()
+	
 	match state:
 		MenuStates.NONE:
+			# Hide just the sub-menus or the entire layer depending on design.
+			# If we want the layer hidden: visible = false (but let's keep it visible for now and just hide contents)
 			main_menu.visible = false
 			pause_menu.visible = false
 			settings_menu.visible = false
@@ -168,8 +182,16 @@ func set_menu_state(state: MenuStates) -> void:
 
 
 func _on_play_button_pressed() -> void:
-	if load_scene:
-		get_tree().change_scene_to_file(load_scene)
+	get_tree().paused = false
+	if is_start_menu:
+		if load_scene:
+			print("Changing scene to: ", load_scene)
+			get_tree().change_scene_to_file(load_scene)
+		else:
+			print("Error: load_scene path is empty!")
+	else:
+		print("Reloading current scene")
+		get_tree().reload_current_scene()
 
 
 func _on_resume_button_pressed() -> void:

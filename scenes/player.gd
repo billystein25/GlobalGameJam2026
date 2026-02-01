@@ -3,8 +3,12 @@ extends Area2D
 
 signal request_spawn_bullet(pos: Vector2, dir: Vector2, data: Bullet, source: Node)
 signal on_leave(animation: AnimatedSprite2D, position: Vector2)
+<<<<<<< HEAD
 signal update_energy(value: int)
 signal update_score(value: int)
+=======
+signal died()
+>>>>>>> 21c475a697ec6bf4e027a1b81999dd7e8f4d477a
 
 var energy: int = 100:
 	set(value):
@@ -40,6 +44,7 @@ var potential_grab_target: Enemy = null
 @onready var health_bar: ProgressBar = $HealthBar
 
 @export var decay_rate: float = 2.0 # Health lost per second while possessing
+var is_dying: bool = false
 
 
 func _ready() -> void:
@@ -52,6 +57,7 @@ func _ready() -> void:
 	
 
 func _physics_process(delta: float) -> void:
+	if is_dying: return
 	var direction = Input.get_vector("Player Go Left", "Player Go Right", "Player Go Up", "Player Go Down")
 	speed += delta * direction * acceleration
 	speed *= 1.0 - deceleration
@@ -69,6 +75,7 @@ func _physics_process(delta: float) -> void:
 			shoot()
 
 func _process(delta: float) -> void:
+	if is_dying: return
 	mouse_pos = get_global_mouse_position()
 
 	if onEnemy:
@@ -205,5 +212,8 @@ func got_hit(current_bullet: Bullet, bullet_direction: Vector2) -> void:
 		print("Player Mask Hit! HP: ", health)
 		if health <= 0:
 			print("Player Died!")
-			# TODO: Add game over logic here
+			is_dying = true
+			sprite.play("death")
+			await sprite.animation_finished
+			died.emit()
 			queue_free()

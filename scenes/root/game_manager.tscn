@@ -3,13 +3,38 @@
 [ext_resource type="Script" uid="uid://hmw2bx6cbghr" path="res://scenes/root/game_manager.gd" id="1_2ofal"]
 [ext_resource type="PackedScene" uid="uid://bi38a0e7ae2gf" path="res://scenes/enemy.tscn" id="2_r7s56"]
 [ext_resource type="PackedScene" uid="uid://cki75c4q6ug0d" path="res://scenes/player.tscn" id="3_vjrgi"]
+<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://jf3v1j7nrgyt" path="res://scenes/ui/menu_ui.tscn" id="4_88j5r"]
+=======
+[ext_resource type="PackedScene" uid="uid://jf3v1j7nrgyt" path="res://scenes/ui/start_menu_ui.tscn" id="4_88j5r"]
+[ext_resource type="Texture2D" uid="uid://bmnjjqrf6y2e5" path="res://assets/background_blended1.png" id="5_new_bg"]
+[ext_resource type="SpriteFrames" uid="uid://b6qla0ust1ebe" path="res://assets/opening-closing-animation.tres" id="6_new_anim"]
+>>>>>>> 21c475a697ec6bf4e027a1b81999dd7e8f4d477a
 
-[node name="GameManager" type="Node" unique_id=993008258 node_paths=PackedStringArray("enemies", "projectiles", "menu_ui")]
+[node name="GameManager" type="Node" unique_id=993008258 node_paths=PackedStringArray("enemies", "projectiles", "menu_ui", "background_animation")]
 script = ExtResource("1_2ofal")
+load_scene = "res://scenes/root/game_manager.tscn"
 enemies = NodePath("Enemies")
 projectiles = NodePath("Projectiles")
 menu_ui = NodePath("MenuUI")
+background_animation = NodePath("BackgroundAnimation")
+
+[node name="StaticBackground" type="TextureRect" parent="."]
+z_index = -100
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_new_bg")
+
+[node name="BackgroundAnimation" type="AnimatedSprite2D" parent="."]
+z_index = -99
+process_mode = 3
+position = Vector2(960, 540)
+scale = Vector2(4, 4)
+sprite_frames = ExtResource("6_new_anim")
+animation = &"open"
 
 [node name="Enemies" type="Node" parent="." unique_id=1442895623]
 

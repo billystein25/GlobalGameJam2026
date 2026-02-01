@@ -4,6 +4,7 @@
 [ext_resource type="Theme" uid="uid://cbdk2gb61vwjj" path="res://scenes/ui/button_theme.tres" id="2_v35sh"]
 [ext_resource type="Theme" uid="uid://be6j7ps5y3njk" path="res://scenes/ui/sub_menu_theme.tres" id="3_eexpk"]
 [ext_resource type="LabelSettings" uid="uid://cq7vbl5dcvrsj" path="res://scenes/ui/sub_menu_label_settings.tres" id="4_50ifq"]
+[ext_resource type="Texture2D" path="res://assets/intro_scene.png" id="5_intro"]
 
 [node name="MenuUI" type="CanvasLayer" unique_id=683639668 node_paths=PackedStringArray("main_menu", "mm_play_button", "mm_settings_button", "mm_quit_button", "pause_menu", "pm_resume_button", "pm_settings_button", "pm_quit_button", "settings_menu", "back_button", "master_volume_slider", "music_volume_slider", "sound_effect_volume_slider", "death_menu", "dm_retry_button", "dm_quit_button")]
 process_mode = 3
@@ -24,6 +25,14 @@ sound_effect_volume_slider = NodePath("SettingsMenu/SoundEffectVolume/SoundEffec
 death_menu = NodePath("DeathMenu")
 dm_retry_button = NodePath("DeathMenu/RetryButton")
 dm_quit_button = NodePath("DeathMenu/QuitButton")
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_intro")
 
 [node name="MainMenu" type="VBoxContainer" parent="." unique_id=2008474761]
 custom_minimum_size = Vector2(200, 800)
