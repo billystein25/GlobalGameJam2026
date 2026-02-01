@@ -26,6 +26,7 @@ extends Node
 @export var enemies: Node
 @export var projectiles: Node
 @export var menu_ui: MenuUI
+@export var background_animation: AnimatedSprite2D
 @export var spawners: Node
 @export var enemy_spawn_timer: Timer
 @export var increase_spawn_interval_timer: Timer
@@ -40,12 +41,19 @@ var curr_num_enemies: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if background_animation:
+		background_animation.visible = true
+		background_animation.play("open")
+		_handle_intro_animation()
+
+	get_tree().paused = false
 	if menu_ui:
 		menu_ui.load_scene = load_scene
-		menu_ui.set_menu_state(MenuUI.MenuStates.NONE)
 		menu_ui.is_start_menu = false
+		menu_ui.set_menu_state(MenuUI.MenuStates.NONE)
 	var player = get_tree().get_first_node_in_group("player")
 	player.on_leave.connect(on_leave_manager)
+	player.died.connect(_on_player_died)
 	if player:
 		if player.has_signal("request_spawn_bullet"):
 			player.request_spawn_bullet.connect(_on_enemy_spawn_bullet)
@@ -118,4 +126,19 @@ func on_leave_manager(animation: AnimatedSprite2D, position: Vector2, isWizard: 
 		animation.play("death")
 	await animation.animation_finished
 	animation.queue_free()
+
+func _handle_intro_animation() -> void:
+	await background_animation.animation_finished
+	background_animation.visible = false
+
+func _on_player_died() -> void:
+	if background_animation:
+		background_animation.visible = true
+		background_animation.play("close")
+		await background_animation.animation_finished
+	
+	get_tree().paused = true
+	if menu_ui:
+		menu_ui.visible = true
+		menu_ui.set_menu_state(MenuUI.MenuStates.DEATH_MENU)
 # ***************************************
