@@ -3,6 +3,8 @@
 [ext_resource type="LabelSettings" uid="uid://cq7vbl5dcvrsj" path="res://scenes/ui/sub_menu_label_settings.tres" id="1_hjx86"]
 [ext_resource type="Script" uid="uid://cn8vixynv8g5t" path="res://scenes/ui/info_ui.gd" id="1_svwys"]
 [ext_resource type="Texture2D" uid="uid://gmpl2df0pnb5" path="res://assets/Soul_Animtion_UI.png" id="3_svwys"]
+[ext_resource type="Texture2D" uid="uid://f53b3qn5qfmb" path="res://assets/doomthingamagiginma.png" id="4_h7g8v"]
+[ext_resource type="Texture2D" uid="uid://crliehvmomi1k" path="res://assets/mask_turning.png" id="5_m7jhh"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_hjx86"]
 viewport_path = NodePath("MarginContainer/VBoxContainer/TextureRect/SubViewport")
@@ -64,6 +66,45 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_pm1la"]
+viewport_path = NodePath("TextureRect/TextureRect/SubViewport")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhyqg"]
+atlas = ExtResource("5_m7jhh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgffl"]
+atlas = ExtResource("5_m7jhh")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qpbt"]
+atlas = ExtResource("5_m7jhh")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2aum"]
+atlas = ExtResource("5_m7jhh")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g04sc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhyqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qgffl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qpbt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2aum")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
 [node name="InfoUI" type="CanvasLayer" unique_id=1640985751 node_paths=PackedStringArray("score_label", "soul_label")]
 script = ExtResource("1_svwys")
 score_label = NodePath("MarginContainer/VBoxContainer/ScoreLabel")
@@ -118,3 +159,51 @@ grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 text = "10"
 label_settings = ExtResource("1_hjx86")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2021160180]
+anchors_preset = -1
+anchor_left = 0.45
+anchor_top = 0.77
+anchor_right = 0.6
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.44738787, 0.02656301, 0.42847443, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=657063718]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_h7g8v")
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect" unique_id=541400401]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.51
+anchor_top = 0.87
+anchor_right = 0.51
+anchor_bottom = 0.87
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = SubResource("ViewportTexture_pm1la")
+
+[node name="SubViewport" type="SubViewport" parent="TextureRect/TextureRect" unique_id=1905763673]
+transparent_bg = true
+size = Vector2i(32, 32)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TextureRect/TextureRect/SubViewport" unique_id=288902161]
+position = Vector2(16, 16)
+sprite_frames = SubResource("SpriteFrames_g04sc")
+autoplay = "default"

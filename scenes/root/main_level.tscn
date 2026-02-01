@@ -63,7 +63,7 @@ script = ExtResource("3_b47l5")
 metadata/_custom_type_script = "uid://cnm1ti6iwuko5"
 
 [node name="EnemySpawner4" type="Marker2D" parent="Spawners" unique_id=545207303]
-position = Vector2(992, 1161)
+position = Vector2(980, 1018)
 script = ExtResource("3_b47l5")
 metadata/_custom_type_script = "uid://cnm1ti6iwuko5"
 
