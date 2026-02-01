@@ -1,26 +1,66 @@
 [gd_scene format=3 uid="uid://bi38a0e7ae2gf"]
 
-[ext_resource type="Script" uid="uid://brji3tr5c2soj" path="res://scenes/enemy.gd" id="1_7p1mj"]
-[ext_resource type="Texture2D" uid="uid://cux0kyit1ob7o" path="res://icon.svg" id="2_md0e3"]
-[ext_resource type="AudioStream" uid="uid://cpqwndb4sj1f3" path="res://custom resources/Blip.wav" id="3_4ra3w"]
+[ext_resource type="Script" uid="uid://brji3tr5c2soj" path="res://scenes/enemies/enemy.gd" id="1_7p1mj"]
+[ext_resource type="Script" uid="uid://bmi2be76ohiii" path="res://scenes/enemies/enemies_resource.gd" id="2_c4w8v"]
+[ext_resource type="AudioStream" uid="uid://cpqwndb4sj1f3" path="res://assets/sounds/Blip.wav" id="3_4ra3w"]
+[ext_resource type="Script" uid="uid://8jhmqy4er0c1" path="res://custom resources/Bullets/bullet.gd" id="3_xwavj"]
+[ext_resource type="Material" uid="uid://c5puif3150l30" path="res://shaders/alpha_lock_color_change_shader_material.tres" id="5_md484"]
+[ext_resource type="SpriteFrames" uid="uid://bapavsptno1oj" path="res://custom resources/Enemies/animations/wizard_animation.tres" id="5_nenq2"]
+[ext_resource type="SpriteFrames" uid="uid://dcfl6kmciyqoj" path="res://custom resources/Enemies/animations/goblin_animation.tres" id="5_xwavj"]
+[ext_resource type="Shader" uid="uid://ya1h30t3n0y4" path="res://shaders/alpha_lock_color_change_shader.gdshader" id="6_md484"]
+
+[sub_resource type="Resource" id="Resource_c4w8v"]
+script = ExtResource("3_xwavj")
+metadata/_custom_type_script = "uid://8jhmqy4er0c1"
+
+[sub_resource type="Resource" id="Resource_xwavj"]
+script = ExtResource("2_c4w8v")
+bullet = SubResource("Resource_c4w8v")
+sprite_anime = ExtResource("5_xwavj")
+metadata/_custom_type_script = "uid://bmi2be76ohiii"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ipns3"]
+shader = ExtResource("6_md484")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/progress = 0.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_md0e3"]
-radius = 68.0
-height = 318.0
+radius = 49.0
+height = 98.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1655233537]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1655233537 node_paths=PackedStringArray("time_to_shoot") groups=["Enemy"]]
+material = ExtResource("5_md484")
+collision_layer = 2
+collision_mask = 2
 safe_margin = 9.144
 script = ExtResource("1_7p1mj")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2134237476]
-position = Vector2(0, -69.25)
-scale = Vector2(1, 1.0117188)
-texture = ExtResource("2_md0e3")
+enemy_resource = SubResource("Resource_xwavj")
+time_to_shoot = NodePath("TimeToShoot")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=279762641]
+material = SubResource("ShaderMaterial_ipns3")
+position = Vector2(3, -54)
+scale = Vector2(6, 6.0625005)
+sprite_frames = ExtResource("5_nenq2")
+animation = &"death"
 
-[node name="Hitbox" type="CollisionShape2D" parent="." unique_id=1307537726]
-position = Vector2(0, -68)
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=192837465]
+offset_left = -33.0
+offset_top = -117.0
+offset_right = 35.0
+offset_bottom = -110.0
+show_percentage = false
+
+[node name="RankLabel" type="Label" parent="." unique_id=982547123]
+offset_left = -20.0
+offset_top = -140.0
+offset_right = 20.0
+offset_bottom = -117.0
+text = "1"
+horizontal_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1307537726]
+position = Vector2(0, -55)
 shape = SubResource("CapsuleShape2D_md0e3")
 
 [node name="snd_hit" type="AudioStreamPlayer" parent="." unique_id=1750178298]
@@ -29,8 +69,6 @@ pitch_scale = 4.0
 
 [node name="snd_die" type="AudioStreamPlayer" parent="." unique_id=886338663]
 
-[node name="Control" type="Control" parent="." unique_id=362181409]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="TimeToShoot" type="Timer" parent="." unique_id=1418818892]
+one_shot = true
+autostart = true

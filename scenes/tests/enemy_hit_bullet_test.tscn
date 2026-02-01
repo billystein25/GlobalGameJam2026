@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bcdkkrqil8f63"]
 
 [ext_resource type="Script" uid="uid://dr8v2hms2hpsb" path="res://scenes/tests/bullet_test_scene.gd" id="1_2o1yo"]
-[ext_resource type="Script" uid="uid://8jhmqy4er0c1" path="res://custom resources/bullet.gd" id="2_45xgc"]
+[ext_resource type="Script" uid="uid://8jhmqy4er0c1" path="res://custom resources/Bullets/bullet.gd" id="2_45xgc"]
 [ext_resource type="PackedScene" uid="uid://bi38a0e7ae2gf" path="res://scenes/enemy.tscn" id="3_ggy53"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ggy53"]
@@ -19,3 +19,4 @@ bullet_dir = Vector2(1, 0)
 
 [node name="CharacterBody2D" parent="." unique_id=1655233537 instance=ExtResource("3_ggy53")]
 position = Vector2(688, 73)
+enemy_resource = null

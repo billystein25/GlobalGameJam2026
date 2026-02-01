@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cki75c4q6ug0d"]
+
+[ext_resource type="Script" uid="uid://svh58401w1fa" path="res://scenes/player.gd" id="1_3vyb7"]
+[ext_resource type="Texture2D" uid="uid://cux0kyit1ob7o" path="res://icon.svg" id="2_g2els"]
+
+[node name="Player" type="Area2D" unique_id=1181188848]
+script = ExtResource("1_3vyb7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1015524492]
+position = Vector2(230, 147)
+texture = ExtResource("2_g2els")
+
+[node name="GrabArea" type="Area2D" parent="." unique_id=1569190510]
+
+[connection signal="body_entered" from="GrabArea" to="." method="_on_grab_area_body_entered"]
