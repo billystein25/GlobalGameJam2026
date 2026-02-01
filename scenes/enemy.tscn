@@ -66,8 +66,10 @@ shape = SubResource("CapsuleShape2D_md0e3")
 [node name="snd_hit" type="AudioStreamPlayer" parent="." unique_id=1750178298]
 stream = ExtResource("3_4ra3w")
 pitch_scale = 4.0
+bus = &"SoundEffects"
 
 [node name="snd_die" type="AudioStreamPlayer" parent="." unique_id=886338663]
+bus = &"SoundEffects"
 
 [node name="TimeToShoot" type="Timer" parent="." unique_id=1418818892]
 one_shot = true
