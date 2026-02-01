@@ -19,5 +19,4 @@ acceleration = 50.0
 type = 3
 collision_box = SubResource("CapsuleShape2D_krg74")
 sprite_anime = ExtResource("3_krg74")
-sprite_anime = ExtResource("3_krg74")
 metadata/_custom_type_script = "uid://bmi2be76ohiii"

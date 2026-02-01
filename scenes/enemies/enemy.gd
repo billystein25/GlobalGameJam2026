@@ -108,7 +108,7 @@ func anim():
 		
 		# Death Logic
 		if player and player.has_method("kill_enemy"):
-			player.kill_enemy(enemy_resource.rank)
+			player.kill_enemy(enemy_resource)
 		snd_die.play()
 		animsprite.play("death")
 		await animsprite.animation_finished
