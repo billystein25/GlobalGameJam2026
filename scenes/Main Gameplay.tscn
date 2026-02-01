@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dgx2ub3h1300o"]
 
-[ext_resource type="Texture2D" uid="uid://dg4vpirhbthk4" path="res://Animation Sprite 2D/Soul Animation UI.webp" id="1_ekrvn"]
 [ext_resource type="SpriteFrames" uid="uid://cdgr686w03x53" path="res://Animation Sprite 2D/Animations/background_field.tres" id="1_voi6i"]
+[ext_resource type="Texture2D" uid="uid://cyriwja4g5p38" path="res://Animation Sprite 2D/Soul Animtion UI.png" id="2_voi6i"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8rfti"]
 font_size = 24
@@ -20,40 +20,37 @@ stacked_outline_count = 1
 stacked_outline_0/size = 6
 stacked_outline_0/color = Color(0.10491943, 0.1386702, 0.28125, 1)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_voi6i"]
-atlas = ExtResource("1_ekrvn")
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqe7n"]
+atlas = ExtResource("2_voi6i")
 region = Rect2(0, 0, 12, 12)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lqe7n"]
-atlas = ExtResource("1_ekrvn")
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5vgh"]
+atlas = ExtResource("2_voi6i")
 region = Rect2(12, 0, 12, 12)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f5vgh"]
-atlas = ExtResource("1_ekrvn")
+[sub_resource type="AtlasTexture" id="AtlasTexture_511w2"]
+atlas = ExtResource("2_voi6i")
 region = Rect2(24, 0, 12, 12)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_511w2"]
-atlas = ExtResource("1_ekrvn")
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqj10"]
+atlas = ExtResource("2_voi6i")
 region = Rect2(0, 12, 12, 12)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vqj10"]
-atlas = ExtResource("1_ekrvn")
+[sub_resource type="AtlasTexture" id="AtlasTexture_td87e"]
+atlas = ExtResource("2_voi6i")
 region = Rect2(12, 12, 12, 12)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_td87e"]
-atlas = ExtResource("1_ekrvn")
+[sub_resource type="AtlasTexture" id="AtlasTexture_38ksf"]
+atlas = ExtResource("2_voi6i")
 region = Rect2(24, 12, 12, 12)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_38ksf"]
-atlas = ExtResource("1_ekrvn")
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcxcl"]
+atlas = ExtResource("2_voi6i")
 region = Rect2(0, 24, 12, 12)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hcxcl"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_voi6i")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lqe7n")
 }, {
@@ -71,9 +68,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_38ksf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcxcl")
 }],
 "loop": true,
-"name": &"default",
+"name": &"flare",
 "speed": 5.0
 }]
 
@@ -108,13 +108,14 @@ z_index = -1
 position = Vector2(571, 330.00003)
 scale = Vector2(2.3999977, 2.4000018)
 sprite_frames = ExtResource("1_voi6i")
-animation = &"out"
+animation = &"in"
 frame = 7
 frame_progress = 1.0
 
-[node name="Soul Animation" type="AnimatedSprite2D" parent="." unique_id=778224398]
-position = Vector2(992, 90.00001)
-scale = Vector2(4.774026, 5.0551186)
+[node name="Soul Animation UI" type="AnimatedSprite2D" parent="." unique_id=1972730657]
+position = Vector2(985.99994, 91.00001)
+scale = Vector2(5.604163, 4.8750005)
 sprite_frames = SubResource("SpriteFrames_hcxcl")
-autoplay = "default"
-frame_progress = 0.30828288
+animation = &"flare"
+autoplay = "flare"
+frame_progress = 0.9028162

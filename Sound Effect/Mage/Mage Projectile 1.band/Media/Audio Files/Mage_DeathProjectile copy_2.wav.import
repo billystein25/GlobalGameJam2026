@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://2dqgrjybch8s"
+path="res://.godot/imported/Mage_DeathProjectile copy_2.wav-39dfa50e2f2f29b2b35472dbd0e8917c.sample"
+
+[deps]
+
+source_file="res://Sound Effect/Mage/Mage Projectile 1.band/Media/Audio Files/Mage_DeathProjectile copy_2.wav"
+dest_files=["res://.godot/imported/Mage_DeathProjectile copy_2.wav-39dfa50e2f2f29b2b35472dbd0e8917c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
