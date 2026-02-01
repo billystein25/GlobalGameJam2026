@@ -80,6 +80,9 @@ func _ready() -> void:
 				info_ui.set_score_label(value)
 		)
 		
+		# Sync initial UI state
+		info_ui.set_souls_label(player.energy)
+		
 	for enemy in get_tree().get_nodes_in_group("Enemy"):
 		enemy.request_spawn_bullet.connect(_on_enemy_spawn_bullet)
 	

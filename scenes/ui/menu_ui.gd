@@ -41,6 +41,7 @@ var is_start_menu := true
 @export var dm_quit_button: Button
 
 @onready var background: TextureRect = $Background
+@onready var menu_music: AudioStreamPlayer = $AudioStreamPlayer
 
 @onready var btn_to_func: Dictionary[Button, Callable] = {
 	# main menu
@@ -73,6 +74,10 @@ func _ready() -> void:
 	for slider in slider_value_changed_to_func:
 		slider.value_changed.connect(slider_value_changed_to_func[slider])
 	set_menu_state(curr_menu_state)
+	
+	if is_start_menu and menu_music:
+		menu_music.play()
+		
 	AudioServer.set_bus_volume_linear(
 		AudioServer.get_bus_index("Master"),
 		Globals.master_volume
@@ -133,6 +138,8 @@ func set_menu_state(state: MenuStates) -> void:
 	
 	match state:
 		MenuStates.NONE:
+			if menu_music and menu_music.playing:
+				menu_music.stop()
 			# Hide just the sub-menus or the entire layer depending on design.
 			# If we want the layer hidden: visible = false (but let's keep it visible for now and just hide contents)
 			main_menu.visible = false
@@ -182,6 +189,8 @@ func set_menu_state(state: MenuStates) -> void:
 
 
 func _on_play_button_pressed() -> void:
+	if menu_music:
+		menu_music.stop()
 	get_tree().paused = false
 	if is_start_menu:
 		if load_scene:

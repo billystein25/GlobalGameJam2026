@@ -45,4 +45,5 @@ position = Vector2(918, 375)
 [node name="Player" parent="." unique_id=1181188848 instance=ExtResource("3_vjrgi")]
 
 [node name="MenuUI" parent="." unique_id=683639668 instance=ExtResource("4_88j5r")]
+is_start_menu = false
 

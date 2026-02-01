@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bl8huvbnqdo04"
+path="res://.godot/imported/07 - Atop the World - Tower of Heaven Original Soundtrack.mp3-3df605e638953a627cca92d7b35a745d.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/07 - Atop the World - Tower of Heaven Original Soundtrack.mp3"
+dest_files=["res://.godot/imported/07 - Atop the World - Tower of Heaven Original Soundtrack.mp3-3df605e638953a627cca92d7b35a745d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
