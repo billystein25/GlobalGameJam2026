@@ -2,17 +2,19 @@
 
 [ext_resource type="Script" uid="uid://hmw2bx6cbghr" path="res://scenes/root/game_manager.gd" id="1_8lngr"]
 [ext_resource type="PackedScene" uid="uid://cki75c4q6ug0d" path="res://scenes/player.tscn" id="2_b47l5"]
-[ext_resource type="PackedScene" uid="uid://jf3v1j7nrgyt" path="res://scenes/ui/start_menu_ui.tscn" id="2_cko7m"]
+[ext_resource type="PackedScene" uid="uid://jf3v1j7nrgyt" path="res://scenes/ui/menu_ui.tscn" id="2_cko7m"]
 [ext_resource type="Texture2D" uid="uid://bmnjjqrf6y2e5" path="res://assets/background_blended1.png" id="2_vcg01"]
 [ext_resource type="Script" uid="uid://cnm1ti6iwuko5" path="res://scenes/enemy_spawner/enemy_spawner.gd" id="3_b47l5"]
 [ext_resource type="SpriteFrames" uid="uid://b6qla0ust1ebe" path="res://assets/opening-closing-animation.tres" id="4_opens"]
+[ext_resource type="PackedScene" uid="uid://ck1qpo532idqx" path="res://scenes/ui/info_ui.tscn" id="6_edhfy"]
 
-[node name="MainLevel" type="Node" unique_id=1213414492 node_paths=PackedStringArray("enemies", "projectiles", "menu_ui", "background_animation", "spawners", "enemy_spawn_timer", "increase_spawn_interval_timer", "increase_max_spawned_enemies_timer")]
+[node name="MainLevel" type="Node" unique_id=1213414492 node_paths=PackedStringArray("enemies", "projectiles", "menu_ui", "background_animation", "info_ui", "spawners", "enemy_spawn_timer", "increase_spawn_interval_timer", "increase_max_spawned_enemies_timer")]
 script = ExtResource("1_8lngr")
 enemies = NodePath("Entities")
 projectiles = NodePath("Projectiles")
 menu_ui = NodePath("MenuUI")
 background_animation = NodePath("BackgroundAnimation")
+info_ui = NodePath("InfoUI")
 spawners = NodePath("Spawners")
 enemy_spawn_timer = NodePath("EnemySpawnTimer")
 increase_spawn_interval_timer = NodePath("IncreaseSpawnIntervalTimer")
@@ -66,6 +68,8 @@ metadata/_custom_type_script = "uid://cnm1ti6iwuko5"
 
 [node name="MenuUI" parent="." unique_id=683639668 instance=ExtResource("2_cko7m")]
 layer = 2
+
+[node name="InfoUI" parent="." unique_id=1640985751 instance=ExtResource("6_edhfy")]
 
 [node name="EnemySpawnTimer" type="Timer" parent="." unique_id=486513236]
 

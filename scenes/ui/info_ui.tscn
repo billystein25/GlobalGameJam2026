@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://ck1qpo532idqx"]
+
+[ext_resource type="Texture2D" uid="uid://dppcr8ay24vcp" path="res://assets/sould_flare.png" id="1_ehs3q"]
+[ext_resource type="LabelSettings" uid="uid://cq7vbl5dcvrsj" path="res://scenes/ui/sub_menu_label_settings.tres" id="1_hjx86"]
+[ext_resource type="Script" uid="uid://cn8vixynv8g5t" path="res://scenes/ui/info_ui.gd" id="1_svwys"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_hjx86"]
+viewport_path = NodePath("MarginContainer/VBoxContainer/TextureRect/SubViewport")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svwys"]
+atlas = ExtResource("1_ehs3q")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7g8v"]
+atlas = ExtResource("1_ehs3q")
+region = Rect2(12, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7jhh"]
+atlas = ExtResource("1_ehs3q")
+region = Rect2(24, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pm1la"]
+atlas = ExtResource("1_ehs3q")
+region = Rect2(0, 12, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1h2h"]
+atlas = ExtResource("1_ehs3q")
+region = Rect2(12, 12, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iq14w"]
+atlas = ExtResource("1_ehs3q")
+region = Rect2(24, 12, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ua2po"]
+atlas = ExtResource("1_ehs3q")
+region = Rect2(0, 24, 12, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sa82a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_svwys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7g8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7jhh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pm1la")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1h2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iq14w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ua2po")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="InfoUI" type="CanvasLayer" unique_id=1640985751 node_paths=PackedStringArray("score_label", "soul_label")]
+script = ExtResource("1_svwys")
+score_label = NodePath("MarginContainer/VBoxContainer/ScoreLabel")
+soul_label = NodePath("MarginContainer/VBoxContainer/TextureRect/SoulLabel")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1903248931]
+custom_minimum_size = Vector2(200, 200)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -133.0
+offset_bottom = 201.0
+grow_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=905453134]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1571379183]
+layout_mode = 2
+text = "Score: "
+label_settings = ExtResource("1_hjx86")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=273837450]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+texture = SubResource("ViewportTexture_hjx86")
+
+[node name="SubViewport" type="SubViewport" parent="MarginContainer/VBoxContainer/TextureRect" unique_id=1278635123]
+transparent_bg = true
+size = Vector2i(12, 12)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer/VBoxContainer/TextureRect/SubViewport" unique_id=1581788277]
+position = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_sa82a")
+autoplay = "default"
+
+[node name="SoulLabel" type="Label" parent="MarginContainer/VBoxContainer/TextureRect" unique_id=2124983039]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+text = "15"
+label_settings = ExtResource("1_hjx86")

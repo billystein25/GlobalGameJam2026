@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://hmw2bx6cbghr" path="res://scenes/root/game_manager.gd" id="1_2ofal"]
 [ext_resource type="PackedScene" uid="uid://bi38a0e7ae2gf" path="res://scenes/enemy.tscn" id="2_r7s56"]
 [ext_resource type="PackedScene" uid="uid://cki75c4q6ug0d" path="res://scenes/player.tscn" id="3_vjrgi"]
-[ext_resource type="PackedScene" uid="uid://jf3v1j7nrgyt" path="res://scenes/ui/start_menu_ui.tscn" id="4_88j5r"]
+[ext_resource type="PackedScene" uid="uid://jf3v1j7nrgyt" path="res://scenes/ui/menu_ui.tscn" id="4_88j5r"]
 [ext_resource type="Texture2D" uid="uid://bmnjjqrf6y2e5" path="res://assets/background_blended1.png" id="5_new_bg"]
 [ext_resource type="SpriteFrames" uid="uid://b6qla0ust1ebe" path="res://assets/opening-closing-animation.tres" id="6_new_anim"]
 
@@ -45,3 +45,4 @@ position = Vector2(918, 375)
 [node name="Player" parent="." unique_id=1181188848 instance=ExtResource("3_vjrgi")]
 
 [node name="MenuUI" parent="." unique_id=683639668 instance=ExtResource("4_88j5r")]
+
