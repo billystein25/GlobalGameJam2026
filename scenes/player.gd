@@ -7,7 +7,7 @@ signal died()
 signal update_energy(value: int)
 signal update_score(value: int)
 
-var energy: int = 100:
+var energy: int = 5:
 	set(value):
 		if value > energy:
 			update_score.emit(value)
@@ -16,7 +16,7 @@ var energy: int = 100:
 var onEnemy = false
 var health: float = 1
 var souls: int = 0 
-var acceleration: float = 100.0
+var acceleration: float = 150.0
 var speed = Vector2.ZERO
 var deceleration: float = 0.4
 var enemy_health: float = 0.0
@@ -61,8 +61,8 @@ func _physics_process(delta: float) -> void:
 	position += speed
 	
 	if onEnemy:
-		enemy_health -= decay_rate * delta
-		health_bar.value = enemy_health
+		# enemy_health -= decay_rate * delta
+		# health_bar.value = enemy_health
 		if enemy_health <= 0:
 			leave()
 	
@@ -103,10 +103,10 @@ func _process(delta: float) -> void:
 		elif is_instance_valid(potential_grab_target):
 			try_grab(potential_grab_target)
 
-func kill_enemy() -> void:
-	energy += 1
-	souls += 1 
-	print("Energy Gained! Total: ", energy)
+func kill_enemy(_rank_value: int = 1) -> void:
+	energy = min(energy + 1, 100)
+	souls += 2
+	print("Enemy Killed! +1 Energy. Total: ", energy)
 	
 	# Existing mechanic: slightly reduce deceleration every 5 kills (optional)
 	if souls % 5 == 0:
@@ -147,7 +147,7 @@ func grab(enemy: Enemy) -> void:
 		hurtbox.shape = enemy_data.collision_box
 	
 	# Movement stats (adjust to match enemy feel)
-	acceleration = enemy_data.acceleration
+	acceleration = enemy_data.acceleration * 0.8
 	
 	onEnemy = true
 	potential_grab_target = null 

@@ -16,11 +16,13 @@ var seconds_per_shot: float = 1.0 / shots_per_second
 @export var min_bullet_speed: float = 100.0:
 	set(value):
 		min_bullet_speed = value
-		max_bullet_speed = maxf(max_bullet_speed, min_bullet_speed)
+		if max_bullet_speed < min_bullet_speed:
+			max_bullet_speed = min_bullet_speed
 @export var max_bullet_speed: float = 100.0:
 	set(value):
 		max_bullet_speed = value
-		min_bullet_speed = minf(min_bullet_speed, max_bullet_speed)
+		if min_bullet_speed > max_bullet_speed:
+			min_bullet_speed = max_bullet_speed
 		
 @export var offset: Vector2 = Vector2.ZERO
 ## In degrees

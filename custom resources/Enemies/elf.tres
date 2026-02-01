@@ -11,9 +11,11 @@ height = 120.0
 [resource]
 script = ExtResource("1_al1hs")
 bullet = ExtResource("1_vygy0")
+health = 80.0
 power = 40.0
-rank = 2
-max_speed = 25.0
+rank = 3
+max_speed = 150.0
+acceleration = 300.0
 type = 2
 collision_box = SubResource("CapsuleShape2D_vygy0")
 sprite_anime = ExtResource("3_e4hmv")

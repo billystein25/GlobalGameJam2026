@@ -9,6 +9,10 @@ radius = 40.0
 
 [resource]
 script = ExtResource("1_ltv2s")
+damage = 15.0
+shots_per_second = 1.5
+min_bullet_speed = 180.0
+max_bullet_speed = 180.0
 offset = Vector2(-10, 0)
 collision_box = SubResource("CircleShape2D_mq0ll")
 texture = ExtResource("2_mq0ll")
