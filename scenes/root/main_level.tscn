@@ -10,6 +10,7 @@
 
 [node name="MainLevel" type="Node" unique_id=1213414492 node_paths=PackedStringArray("enemies", "projectiles", "menu_ui", "background_animation", "info_ui", "spawners", "enemy_spawn_timer", "increase_spawn_interval_timer", "increase_max_spawned_enemies_timer")]
 script = ExtResource("1_8lngr")
+load_scene = "uid://t6psbobjtjm7"
 enemies = NodePath("Entities")
 projectiles = NodePath("Projectiles")
 menu_ui = NodePath("MenuUI")
