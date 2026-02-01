@@ -12,7 +12,7 @@ enum EnemyTypes{
 @export var bullet: Bullet
 @export_group("Enemy Properties")
 @export var health: float = 100.0
-@export var power: float = 100.0
+@export var power: int = 10
 @export var rank: int = 1
 @export var max_speed: float = 70
 ## Only works when [member shot_type] is [constant ShotType.SHOTGUN].

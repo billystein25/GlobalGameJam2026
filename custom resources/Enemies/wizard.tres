@@ -11,6 +11,8 @@ height = 120.0
 [resource]
 script = ExtResource("1_gmkai")
 bullet = ExtResource("1_svtnw")
+power = 4
+rank = 5
 collision_box = SubResource("CapsuleShape2D_svtnw")
 sprite_anime = ExtResource("3_xu3bu")
 metadata/_custom_type_script = "uid://bmi2be76ohiii"

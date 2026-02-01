@@ -7,7 +7,7 @@ signal died()
 signal update_energy(value: int)
 signal update_score(value: int)
 
-var energy: int = 100:
+var energy: int = 10:
 	set(value):
 		if value > energy:
 			update_score.emit(value)
@@ -103,8 +103,8 @@ func _process(delta: float) -> void:
 		elif is_instance_valid(potential_grab_target):
 			try_grab(potential_grab_target)
 
-func kill_enemy() -> void:
-	energy += 1
+func kill_enemy(enemy_data: Enemy_resource) -> void:
+	energy += enemy_data.power
 	souls += 1 
 	print("Energy Gained! Total: ", energy)
 	
