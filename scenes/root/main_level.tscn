@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://t6psbobjtjm7"]
+
+[ext_resource type="Script" uid="uid://hmw2bx6cbghr" path="res://scenes/root/game_manager.gd" id="1_8lngr"]
+[ext_resource type="PackedScene" uid="uid://cki75c4q6ug0d" path="res://scenes/player.tscn" id="2_b47l5"]
+[ext_resource type="PackedScene" uid="uid://jf3v1j7nrgyt" path="res://scenes/ui/start_menu_ui.tscn" id="2_cko7m"]
+[ext_resource type="Script" uid="uid://cnm1ti6iwuko5" path="res://scenes/enemy_spawner/enemy_spawner.gd" id="3_b47l5"]
+
+[node name="MainLevel" type="Node" unique_id=1213414492 node_paths=PackedStringArray("enemies", "projectiles", "menu_ui", "spawners", "enemy_spawn_timer", "increase_spawn_interval_timer", "increase_max_spawned_enemies_timer")]
+script = ExtResource("1_8lngr")
+enemies = NodePath("Entities")
+projectiles = NodePath("Projectiles")
+menu_ui = NodePath("MenuUI")
+spawners = NodePath("Spawners")
+enemy_spawn_timer = NodePath("EnemySpawnTimer")
+increase_spawn_interval_timer = NodePath("IncreaseSpawnIntervalTimer")
+increase_max_spawned_enemies_timer = NodePath("IncreaseMaxSpawnedEnemiesTimer")
+metadata/_custom_type_script = "uid://hmw2bx6cbghr"
+
+[node name="Entities" type="Node2D" parent="." unique_id=755761729]
+
+[node name="Player" parent="Entities" unique_id=1181188848 groups=["player"] instance=ExtResource("2_b47l5")]
+
+[node name="Projectiles" type="Node" parent="." unique_id=889259240]
+
+[node name="Spawners" type="Node" parent="." unique_id=169343153]
+
+[node name="EnemySpawner" type="Marker2D" parent="Spawners" unique_id=1665237885]
+position = Vector2(-75, 556)
+script = ExtResource("3_b47l5")
+metadata/_custom_type_script = "uid://cnm1ti6iwuko5"
+
+[node name="EnemySpawner2" type="Marker2D" parent="Spawners" unique_id=982650700]
+position = Vector2(1996, 536)
+script = ExtResource("3_b47l5")
+metadata/_custom_type_script = "uid://cnm1ti6iwuko5"
+
+[node name="EnemySpawner3" type="Marker2D" parent="Spawners" unique_id=2112900025]
+position = Vector2(992, -73)
+script = ExtResource("3_b47l5")
+metadata/_custom_type_script = "uid://cnm1ti6iwuko5"
+
+[node name="EnemySpawner4" type="Marker2D" parent="Spawners" unique_id=545207303]
+position = Vector2(992, 1161)
+script = ExtResource("3_b47l5")
+metadata/_custom_type_script = "uid://cnm1ti6iwuko5"
+
+[node name="MenuUI" parent="." unique_id=683639668 instance=ExtResource("2_cko7m")]
+layer = 2
+
+[node name="EnemySpawnTimer" type="Timer" parent="." unique_id=486513236]
+
+[node name="IncreaseSpawnIntervalTimer" type="Timer" parent="." unique_id=910098953]
+
+[node name="IncreaseMaxSpawnedEnemiesTimer" type="Timer" parent="." unique_id=1294862338]

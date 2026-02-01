@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Bullet" format=3 uid="uid://766c3pvick4b"]
+
+[ext_resource type="Script" uid="uid://8jhmqy4er0c1" path="res://custom resources/Bullets/bullet.gd" id="1_ltv2s"]
+[ext_resource type="AudioStream" uid="uid://dxjnemr56f53y" path="res://assets/sounds/arrow2.wav" id="2_m8dh4"]
+[ext_resource type="Texture2D" uid="uid://nhik2rk3myxo" path="res://assets/arrow.png" id="2_mq0ll"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mq0ll"]
+radius = 40.0
+
+[resource]
+script = ExtResource("1_ltv2s")
+offset = Vector2(-10, 0)
+collision_box = SubResource("CircleShape2D_mq0ll")
+texture = ExtResource("2_mq0ll")
+shoot_sound = ExtResource("2_m8dh4")
+metadata/_custom_type_script = "uid://8jhmqy4er0c1"

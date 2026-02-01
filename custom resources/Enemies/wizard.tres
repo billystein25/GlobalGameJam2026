@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Enemy_resource" format=3 uid="uid://c8oydlxfohjk5"]
+
+[ext_resource type="Script" uid="uid://bmi2be76ohiii" path="res://scenes/enemies/enemies_resource.gd" id="1_gmkai"]
+[ext_resource type="Resource" uid="uid://ce6xq8chq6iyx" path="res://custom resources/Bullets/yellow_orb.tres" id="1_svtnw"]
+[ext_resource type="SpriteFrames" uid="uid://bapavsptno1oj" path="res://custom resources/Enemies/animations/wizard_animation.tres" id="3_xu3bu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_svtnw"]
+radius = 40.0
+height = 120.0
+
+[resource]
+script = ExtResource("1_gmkai")
+bullet = ExtResource("1_svtnw")
+collision_box = SubResource("CapsuleShape2D_svtnw")
+sprite_anime = ExtResource("3_xu3bu")
+metadata/_custom_type_script = "uid://bmi2be76ohiii"
