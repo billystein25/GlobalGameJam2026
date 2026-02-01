@@ -13,17 +13,8 @@ var seconds_per_shot: float = 1.0 / shots_per_second
 ## Only works when [member shot_type] is [constant ShotType.SHOTGUN].
 @export var bullets_per_shot: int = 1
 @export var shot_type: ShotType = ShotType.RAPID
-@export var min_bullet_speed: float = 100.0:
-	set(value):
-		min_bullet_speed = value
-		if max_bullet_speed < min_bullet_speed:
-			max_bullet_speed = min_bullet_speed
-@export var max_bullet_speed: float = 100.0:
-	set(value):
-		max_bullet_speed = value
-		if min_bullet_speed > max_bullet_speed:
-			min_bullet_speed = max_bullet_speed
-		
+@export var min_bullet_speed: float = 100.0
+@export var max_bullet_speed: float = 100.0
 @export var offset: Vector2 = Vector2.ZERO
 ## In degrees
 @export var spread: float = 0.0

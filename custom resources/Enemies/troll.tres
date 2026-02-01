@@ -11,10 +11,10 @@ height = 170.0
 [resource]
 script = ExtResource("1_hkiio")
 bullet = ExtResource("1_0attb")
-health = 500.0
-power = 150.0
+health = 300.0
+power = 8
 rank = 10
-max_speed = 40.0
+max_speed = 30.0
 acceleration = 50.0
 type = 3
 collision_box = SubResource("CapsuleShape2D_krg74")

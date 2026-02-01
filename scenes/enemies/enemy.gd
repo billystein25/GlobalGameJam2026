@@ -8,7 +8,7 @@ var isAlive = true
 var direction: Vector2 = Vector2.ZERO
 #imports 
 @onready var animsprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var player: Node2D = get_tree().get_first_node_in_group("player")
+@onready var player: Player = get_tree().get_first_node_in_group("player")
 @onready var snd_die = $snd_die
 @onready var snd_hit = $snd_hit
 
@@ -98,7 +98,7 @@ func _on_request_shoot() -> void:
 	if !isAlive: return # Don't shoot if dead
 	for i in enemy_resource.bullet.bullets_per_shot:
 		if player:
-			request_spawn_bullet.emit(position, position.direction_to(player.position), enemy_resource.bullet, self)
+			request_spawn_bullet.emit(position + Vector2(0.0, -50.0), position.direction_to(player.position), enemy_resource.bullet, self)
 	time_to_shoot.start()
 
 

@@ -9,10 +9,10 @@ radius = 30.0
 
 [resource]
 script = ExtResource("1_blttm")
-damage = 10.0
+damage = 5.0
 shots_per_second = 3.0
-min_bullet_speed = 150.0
-max_bullet_speed = 150.0
+min_bullet_speed = 80.0
+spread = 10.0
 collision_box = SubResource("CircleShape2D_hcxrm")
 texture = ExtResource("2_nukry")
 shoot_sound = ExtResource("2_gl5m7")

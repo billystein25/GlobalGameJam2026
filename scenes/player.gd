@@ -7,7 +7,7 @@ signal died()
 signal update_energy(value: int)
 signal update_score(value: int)
 
-var energy: int = 5:
+var energy: int = 10:
 	set(value):
 		if value > energy:
 			update_score.emit(value)
@@ -103,10 +103,10 @@ func _process(delta: float) -> void:
 		elif is_instance_valid(potential_grab_target):
 			try_grab(potential_grab_target)
 
-func kill_enemy(_rank_value: int = 1) -> void:
-	energy = min(energy + 1, 100)
-	souls += 2
-	print("Enemy Killed! +1 Energy. Total: ", energy)
+func kill_enemy(enemy_data: Enemy_resource) -> void:
+	energy += enemy_data.power
+	souls += 1 
+	print("Energy Gained! Total: ", energy)
 	
 	# Existing mechanic: slightly reduce deceleration every 5 kills (optional)
 	if souls % 5 == 0:

@@ -9,12 +9,9 @@ radius = 40.0
 
 [resource]
 script = ExtResource("1_cxkxv")
-damage = 25.0
-shots_per_second = 1.0
-bullets_per_shot = 3
-shot_type = 0
-min_bullet_speed = 120.0
-max_bullet_speed = 120.0
+bullets_per_shot = 2
+min_bullet_speed = 50.0
+max_bullet_speed = 110.0
 spread = 30.0
 collision_box = SubResource("CircleShape2D_uckop")
 texture = ExtResource("2_uckop")
